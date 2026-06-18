@@ -2,18 +2,135 @@
     ViewData["Title"] = "Sākums";
 }
 
-<section class="min-h-screen px-6 py-20">
-    <div class="mx-auto max-w-6xl">
-        <p class="text-sm uppercase tracking-[0.35em] text-red-700">
-            Literārā biedrība
-        </p>
+<section class="min-h-screen bg-stone-50 px-6">
+    <div class="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center text-center">
 
-        <h1 class="mt-8 max-w-4xl text-6xl font-semibold leading-none tracking-tight md:text-8xl">
+        <img src="/images/slogo3.png"
+             alt="Sintakses Stupors"
+             class="mx-auto h-40 w-auto" />
+
+        <div class="my-10 h-px w-40 bg-neutral-300"></div>
+
+        <h1 class="hero-title mt-4 text-5xl font-light tracking-tight text-neutral-950 md:text-6xl">
             Sintakses Stupors
         </h1>
 
-        <p class="mt-8 max-w-2xl text-xl leading-8 text-neutral-600">
-            Dzeja, autori, notikumi un attēli no vietas, kur valoda uz brīdi apstājas.
+        <p class="mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+            Vieta literatūrai, autoriem un notikumiem.
         </p>
+
+        <nav class="mt-16 flex flex-wrap justify-center gap-8 text-lg">
+            <a href="#par-mums" class="transition hover:text-red-700 focus:outline-none">Par mums</a>
+            <a href="#autori" class="transition hover:text-red-700 focus:outline-none">Autori</a>
+            <a href="#" class="transition hover:text-red-700 focus:outline-none">Galerija</a>
+            <a href="#" class="transition hover:text-red-700 focus:outline-none">Pasākumi</a>
+            <a href="#" class="transition hover:text-red-700 focus:outline-none">Kontakti</a>
+        </nav>
+
+    </div>
+</section>
+
+<section id="par-mums" class="border-t border-neutral-200 bg-stone-50 px-6 py-32">
+    <div class="mx-auto grid max-w-6xl gap-16 md:grid-cols-[0.8fr_1.2fr]">
+
+        <div>
+            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                Par mums
+            </p>
+
+            <h2 class="hero-title mt-6 text-4xl font-light leading-tight text-neutral-950 md:text-6xl">
+                Vieta, kur teksts kļūst par balsi.
+            </h2>
+        </div>
+
+        <div class="space-y-6 text-lg leading-8 text-neutral-700">
+            <p>
+                Sintakses Stupors ir entuziastisku indivīdu uzturēta dzejas grupa, kurā rakstošie var dalīties ar saviem dzejoļiem un lasošie ar tiem baroties.
+            </p>
+
+            <p>
+                Mēs rīkojam dzejas lasījumus, radošas tikšanās, pasākumus un publicējam darbus.
+            </p>
+
+            <p>
+                Šī ir vieta mūsu autoriem, notikumiem, galerijām un kopīgajam ceļam literatūrā.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="autori" class="border-t border-neutral-200 bg-white px-6 py-32">
+    <div class="mx-auto max-w-6xl">
+
+        <div class="mb-16 text-center">
+            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                Autori
+            </p>
+
+            @* <h2 class="hero-title mt-6 text-4xl font-light text-neutral-950 md:text-6xl">
+                Autori
+            </h2> *@
+        </div>
+
+        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+           
+            <div class="group text-center">
+                <img src="/images/Autori/Alesja.jpg"
+                     alt="Alesja Loseva"
+                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Aļesja Loseva
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja · atdzeja
+                </p>
+            </div>
+            <div class="group text-center">
+                <img src="/images/Autori/Alps.jpg"
+                     alt="Andris Alps"
+                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Andris Alps
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja · proza
+                </p>
+            </div>
+
+            <div class="group text-center">
+                <img src="/images/Autori/Arnolds.jpg"
+                     alt="Arnolds Ščuckis"
+                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Arnolds Ščuckis
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja
+                </p>
+            </div>
+
+            <div class="group text-center">
+                <img src="/images/Autori/Laima.jpg"
+                     alt="Laima"
+                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Laima Ābele
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja
+                </p>
+            </div>
+
+        </div>
+
     </div>
 </section>
