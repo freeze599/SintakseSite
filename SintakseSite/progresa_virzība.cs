@@ -1,0 +1,246 @@
+﻿# Sintakse.lv — projekta stāvoklis (18.06.2026)
+
+## Projekts
+
+using System.Net;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
+
+*ASP.NET Core MVC(.NET 10)
+*Tailwind CSS
+* Linux serveris(Ubuntu, Hetzner)
+* Domēns: https://sintakse.lv
+*HTTPS: Let's Encrypt
+* Reverse proxy: Nginx
+* Serviss: systemd(`sintakse.service`)
+
+-- -
+
+## Serveris
+
+Aplikācija darbojas kā systemd serviss:
+
+```bash
+systemctl status sintakse
+```
+
+Servisa nosaukums:
+
+```bash
+sintakse.service
+```
+
+Publicēšana:
+
+```bash
+dotnet publish - c Release -o publish
+```
+
+Servisa restartēšana pēc izmaiņām:
+
+```bash
+systemctl restart sintakse
+```
+
+---
+
+## Nginx
+
+Nginx konfigurēts kā reverse proxy uz:
+
+```text
+http://localhost:5050
+```
+
+Domēni:
+
+```text
+sintakse.lv
+www.sintakse.lv
+```
+
+HTTPS darbojas.
+
+---
+
+## GitHub
+
+Repozitorijs:
+
+```text
+https://github.com/freeze599/SintakseSite
+```
+
+Darba process:
+
+```bash
+git add .
+git commit -m "..."
+git push
+```
+
+Serverī:
+
+```bash
+git pull
+dotnet publish -c Release -o publish
+systemctl restart sintakse
+```
+
+---
+
+## Dizains
+
+Virsziens:
+
+*minimālistisks
+* literārs
+* elegants
+* daudz baltās telpas
+*serif virsraksti
+* viegla "izdevuma" / "žurnāla" sajūta
+
+Nākotnē:
+
+*papīra / pergamenta tekstūra fonā
+*ļoti viegla, neuzkrītoša
+
+---
+
+## Sākumlapa
+
+Hero sadaļa:
+
+*logo
+* "Sintakses Stupors"
+* "Vieta literatūrai, autoriem un notikumiem."
+
+Navigācija:
+
+*Par mums
+* Autori
+*Galerija
+* Pasākumi
+* Kontakti
+
+-- -
+
+## Par mums sadaļa
+
+Teksts:
+
+"Sintakses Stupors ir entuziastisku indivīdu uzturēta dzejas grupa..."
+
+Virsraksts:
+
+"Vieta, kur teksts kļūst par balsi."
+
+Izskats pašlaik apmierina.
+
+---
+
+## Autori sadaļa
+
+Izveidota autoru galerija.
+
+Pašlaik:
+
+*Andris Alps
+* Arnolds Ščuckis
+
+Efekts:
+
+*bildes sākotnēji melnbaltas
+*hover->pilnas krāsas
+* neliels zoom efekts
+
+Tailwind klase:
+
+```html
+grayscale group - hover:grayscale - 0
+```
+
+Efekts patīk un paliek.
+
+---
+
+## Nākamie darbi
+
+### 1. Autoru lapas
+
+URL piemēri:
+
+```text
+/ autori / arnolds - scuckis
+/ autori / andris - alps
+```
+
+Katram autoram:
+
+*foto
+* biogrāfija
+* darbi
+* publikācijas
+
+-- -
+
+### 2. Pasākumi
+
+Izveidot modeli:
+
+```csharp
+Event
+```
+
+Lauki:
+
+*Nosaukums
+* Datums
+* Apraksts
+* Vieta
+* Attēls
+
+-- -
+
+### 3. Galerija
+
+Pasākumu fotogrāfijas.
+
+-- -
+
+### 4. Admin panelis
+
+Mērķis:
+
+*pievienot autorus bez koda labošanas
+* pievienot pasākumus bez koda labošanas
+* augšupielādēt bildes
+
+---
+
+### 5. Dizaina uzlabojumi
+
+Izpētīt:
+
+*papīra tekstūru
+* pergamenta efektu
+* vieglu tipogrāfisku izskatu
+
+Saglabāt minimālismu.
+
+---
+
+## Statuss
+
+Sintakse.lv ir publiski pieejams internetā.
+
+Darbojas:
+
+✅ DNS
+✅ HTTPS
+✅ Nginx
+✅ .NET aplikācija
+✅ systemd serviss
+✅ GitHub deploy process
+
+Projekts gatavs tālākai attīstībai.
