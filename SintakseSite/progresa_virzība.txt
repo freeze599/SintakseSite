@@ -227,7 +227,7 @@ Izpētīt:
 * vieglu tipogrāfisku izskatu
 
 Saglabāt minimālismu.
-
+ 
 ---
 
 ## Statuss
