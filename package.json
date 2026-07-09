@@ -1,12 +1,11 @@
 {
-  "name": "sintaksesite",
+    "name": "sintaksesite",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-  "build:css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/site.css --watch",
-  "build:css:prod": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/site.css --minify"
-},
+    "build:css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/site.css --watch",
+    "build:css:prod": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/site.css --minify",
+    "start": "concurrently \"dotnet run\" \"npm run build:css\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/freeze599/SintakseSite.git"
@@ -20,8 +19,9 @@
   },
   "homepage": "https://github.com/freeze599/SintakseSite#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.1",
-    "tailwindcss": "^4.3.1"
+     "@tailwindcss/cli": "^4.3.1",
+    "tailwindcss": "^4.3.1",
+    "concurrently": "^9.0.0"
   },
   "dependencies": {
     "braces": "^3.0.3",

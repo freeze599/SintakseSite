@@ -22,9 +22,10 @@
         <nav class="mt-16 flex flex-wrap justify-center gap-8 text-lg">
             <a href="#par-mums" class="transition hover:text-red-700 focus:outline-none">Par mums</a>
             <a href="#autori" class="transition hover:text-red-700 focus:outline-none">Autori</a>
-            <a href="#" class="transition hover:text-red-700 focus:outline-none">Galerija</a>
-            <a href="#" class="transition hover:text-red-700 focus:outline-none">Pasākumi</a>
-            <a href="#" class="transition hover:text-red-700 focus:outline-none">Kontakti</a>
+           
+            <a href="#pasakumi" class="transition hover:text-red-700 focus:outline-none">Pasākumi</a>
+            <a href="#galerija" class="transition hover:text-red-700 focus:outline-none">Galerija</a>
+            <a href="#kontakti" class="transition hover:text-red-700 focus:outline-none">Kontakti</a>
         </nav>
 
     </div>
@@ -45,7 +46,7 @@
 
         <div class="space-y-6 text-lg leading-8 text-neutral-700">
             <p>
-                Sintakses Stupors ir entuziastisku indivīdu uzturēta dzejas grupa, kurā rakstošie var dalīties ar saviem dzejoļiem un lasošie ar tiem baroties.
+                Sintakses Stupors ir entuziastisku indivīdu uzturēta dzejas grupa, kurā rakstošie var dalīties ar saviem dzejoļiem, tekstiem un savukārt lasošie tos izbaudīt.
             </p>
 
             <p>
@@ -67,14 +68,10 @@
             <p class="text-sm uppercase tracking-[0.35em] text-red-700">
                 Autori
             </p>
-
-            @* <h2 class="hero-title mt-6 text-4xl font-light text-neutral-950 md:text-6xl">
-                Autori
-            </h2> *@
         </div>
 
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-           
+
             <div class="group text-center">
                 <img src="/images/Autori/Alesja.jpg"
                      alt="Alesja Loseva"
@@ -88,6 +85,7 @@
                     Dzeja · atdzeja
                 </p>
             </div>
+
             <div class="group text-center">
                 <img src="/images/Autori/Alps.jpg"
                      alt="Andris Alps"
@@ -118,7 +116,7 @@
 
             <div class="group text-center">
                 <img src="/images/Autori/Laima.jpg"
-                     alt="Laima" 
+                     alt="Laima Ābele"
                      class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
 
                 <h3 class="mt-6 text-2xl text-neutral-950">
@@ -129,6 +127,172 @@
                     Dzeja
                 </p>
             </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="galerija" class="border-t border-neutral-200 bg-stone-50 px-6 py-32">
+    <div class="mx-auto max-w-6xl text-center">
+
+        <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+            Galerija
+        </p>
+
+        <h2 class="hero-title mt-6 text-4xl font-light text-neutral-950 md:text-6xl">
+            Galerija top
+        </h2>
+
+        <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+            Drīzumā šeit kaut kas būs
+        </p>
+
+        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            @for (int i = 0; i < 6; i++)
+            {
+                <div class="aspect-[4/3] animate-pulse rounded-sm bg-neutral-200"></div>
+            }
+        </div>
+
+    </div>
+</section>
+
+<section id="pasakumi" class="border-t border-neutral-200 bg-white px-6 py-32">
+
+    <div class="mx-auto max-w-6xl">
+
+        <div class="mb-20 text-center">
+
+            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                Pasākumi
+            </p>
+
+            <h2 class="hero-title mt-6 text-4xl font-light text-neutral-950 md:text-6xl">
+                Tuvākie notikumi
+            </h2>
+
+            <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+                Aicinām pievienoties mūsu dzejas lasījumiem, literārajiem vakariem
+                un citiem kultūras notikumiem.
+            </p>
+
+        </div>
+
+        <a href="https://pasakumi.cesis.lv/pasakums/svetki-cesis-820/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="group block">
+
+            <div class="grid items-center gap-12 rounded-sm border border-neutral-200 bg-stone-50 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-red-700 hover:shadow-xl lg:grid-cols-[380px_1fr]">
+
+                <!-- Afiša -->
+
+                <div class="overflow-hidden">
+
+                    <img src="/images/Events/Cesis2026/cesis-18-7-2026.png"
+                         alt="Cēsu pilsētas svētki"
+                         class="w-full transition duration-700 group-hover:scale-[1.02]" />
+
+                </div>
+
+                <!-- Informācija -->
+
+                <div>
+
+                    <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                        18.07.2026
+                    </p>
+
+                    <h3 class="mt-5 text-5xl font-light leading-tight text-neutral-950 transition group-hover:text-red-700">
+                        Cēsu pilsētas svētki
+                    </h3>
+
+                    <p class="mt-8 text-xl leading-9 text-neutral-600">
+                        K-Sils un <strong>Sintakses Stupors</strong>
+                    </p>
+
+                    <p class="mt-4 text-neutral-500">
+                        Sākums plkst. <strong>17:00</strong>
+                    </p>
+
+                    <div class="mt-10 inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 group-hover:border-red-700 group-hover:bg-red-700 group-hover:text-white">
+
+                        Plašāka informācija
+
+                        <span class="transition-transform duration-300 group-hover:translate-x-1">
+                            →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+<section id="kontakti" class="border-t border-neutral-200 bg-stone-50 px-6 py-32">
+    <div class="mx-auto max-w-5xl text-center">
+
+        <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+            Kontakti
+        </p>
+
+        <h2 class="hero-title mt-6 text-4xl font-light text-neutral-950 md:text-6xl">
+            Seko mums
+        </h2>
+
+        <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+            Pievienojies mūsu kopienai sociālajos tīklos un seko līdzi
+            jaunākajiem dzejoļiem, literārajiem vakariem un citām aktualitātēm.
+        </p>
+
+        <div class="mx-auto mt-16 grid max-w-3xl gap-6 md:grid-cols-2">
+
+            <a href="https://www.instagram.com/sintaksesstupors/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="group flex min-h-64 flex-col items-center justify-center border border-neutral-200 bg-white px-8 py-12 transition-all duration-500 hover:-translate-y-1 hover:border-red-700 hover:shadow-2xl">
+
+                <p class="text-xs uppercase tracking-[0.35em] text-red-700">
+                    Instagram
+                </p>
+
+                <h3 class="mt-8 text-2xl font-light text-neutral-950">
+                    @@sintaksesstupors
+                </h3>
+
+                <span class="mt-10 inline-flex items-center gap-3 text-sm uppercase tracking-[0.25em] text-neutral-500 transition group-hover:text-red-700">
+                    Atvērt
+                    <span class="transition-transform duration-300 group-hover:translate-x-2">→</span>
+                </span>
+
+            </a>
+
+            <a href="https://www.facebook.com/groups/937678954475837"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="group flex min-h-64 flex-col items-center justify-center border border-neutral-200 bg-white px-8 py-12 transition-all duration-500 hover:-translate-y-1 hover:border-red-700 hover:shadow-2xl">
+
+                <p class="text-xs uppercase tracking-[0.35em] text-red-700">
+                    Facebook
+                </p>
+
+                <h3 class="mt-8 text-2xl font-light text-neutral-950">
+                    Sintakses Stupors
+                </h3>
+
+                <span class="mt-10 inline-flex items-center gap-3 text-sm uppercase tracking-[0.25em] text-neutral-500 transition group-hover:text-red-700">
+                    Atvērt grupu
+                    <span class="transition-transform duration-300 group-hover:translate-x-2">→</span>
+                </span>
+
+            </a>
 
         </div>
 
