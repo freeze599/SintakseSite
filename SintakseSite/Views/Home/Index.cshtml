@@ -1,6 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Sākums";
 }
+<style>
+    .poster-button {
+        position: relative;
+        display: block;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        overflow: hidden;
+        cursor: zoom-in;
+    }
+
+    .poster-image {
+        display: block;
+        width: 300px;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+        transition: transform 0.3s ease;
+    }
+
+    .poster-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .poster-icon {
+        display: flex;
+        width: 54px;
+        height: 54px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        color: #171717;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+
+    .poster-button:hover .poster-image {
+        transform: scale(1.03);
+    }
+
+    .poster-button:hover .poster-overlay {
+        opacity: 1;
+    }
+
+    .poster-button:hover .poster-icon {
+        transform: scale(1);
+    }
+</style>
 
 <section class="min-h-screen bg-stone-50 px-6">
     <div class="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center text-center">
@@ -70,12 +129,16 @@
             </p>
         </div>
 
-        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
 
+            <!-- Aļesja Loseva -->
             <div class="group text-center">
-                <img src="/images/Autori/Alesja.jpg"
-                     alt="Alesja Loseva"
-                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/Alesja.jpg"
+                         alt="Aļesja Loseva"
+                         style="object-position: center 25%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
 
                 <h3 class="mt-6 text-2xl text-neutral-950">
                     Aļesja Loseva
@@ -86,10 +149,14 @@
                 </p>
             </div>
 
+            <!-- Andris Alps -->
             <div class="group text-center">
-                <img src="/images/Autori/Alps.jpg"
-                     alt="Andris Alps"
-                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/Alps.jpg"
+                         alt="Andris Alps"
+                         style="object-position: center 30%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
 
                 <h3 class="mt-6 text-2xl text-neutral-950">
                     Andris Alps
@@ -100,10 +167,14 @@
                 </p>
             </div>
 
+            <!-- Arnolds Ščuckis -->
             <div class="group text-center">
-                <img src="/images/Autori/Arnolds.jpg"
-                     alt="Arnolds Ščuckis"
-                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/Arnolds.jpg"
+                         alt="Arnolds Ščuckis"
+                         style="object-position: center 30%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
 
                 <h3 class="mt-6 text-2xl text-neutral-950">
                     Arnolds Ščuckis
@@ -114,10 +185,140 @@
                 </p>
             </div>
 
+            <!-- Daina Šteinerte -->
             <div class="group text-center">
-                <img src="/images/Autori/Laima.jpg"
-                     alt="Laima Ābele"
-                     class="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-sm object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/DainaSt.jpg"
+                         alt="Daina Šteinerte"
+                         style="object-position: center 35%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Daina Šteinerte
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja · horeogrāfija
+                </p>
+            </div>
+
+            <!-- Dainis Deigelis -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/DainisD.jpg"
+                         alt="Dainis Deigelis"
+                         style="object-position: center 35%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Dainis Deigelis
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja · atdzeja · proza
+                </p>
+            </div>
+
+            <!-- Dita Putniņa -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/DitaP.jpg"
+                         alt="Dita Putniņa"
+                         style="object-position: center 30%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Dita Putniņa
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja
+                </p>
+            </div>
+
+            <!-- Ilze Kuzmicka -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/IlzeK.jpg"
+                         alt="Ilze Kuzmicka"
+                         style="object-position: center 25%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Ilze Kuzmicka
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja
+                </p>
+            </div>
+
+            <!-- Kaspars Sils -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/KasparsS.jpg"
+                         alt="Kaspars Sils"
+                         style="object-position: center 25%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Kaspars Sils
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Mūzika
+                </p>
+            </div>
+
+            <!-- Katrīna Jēkabsone -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/KatrinaJ.jpg"
+                         alt="Katrīna Jēkabsone"
+                         style="object-position: center 30%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Katrīna Jēkabsone
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja
+                </p>
+            </div>
+
+            <!-- Kristīne Jučkoviča -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/KristineJ.jpg"
+                         alt="Kristīne Jučkoviča"
+                         style="object-position: center 25%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
+
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Kristīne Jučkoviča
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja · proza · rakstniecība
+                </p>
+            </div>
+
+            <!-- Laima Ābele -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/Laima.jpg"
+                         alt="Laima Ābele"
+                         style="object-position: center 25%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
 
                 <h3 class="mt-6 text-2xl text-neutral-950">
                     Laima Ābele
@@ -128,10 +329,30 @@
                 </p>
             </div>
 
-        </div>
+            <!-- Pauls Kauķis -->
+            <div class="group text-center">
+                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
+                    <img src="/images/Autori/PaulsK.jpg"
+                         alt="Pauls Kauķis"
+                         style="object-position: center 25%;"
+                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
+                </div>
 
+                <h3 class="mt-6 text-2xl text-neutral-950">
+                    Pauls Kauķis
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    Dzeja
+                </p>
+            </div>
+
+        </div>
     </div>
 </section>
+        
+
+   
 
 <section id="galerija" class="border-t border-neutral-200 bg-stone-50 px-6 py-32">
     <div class="mx-auto max-w-6xl text-center">
@@ -184,7 +405,7 @@
            rel="noopener noreferrer"
            class="group block">
 
-            <div class="grid items-center gap-12 rounded-sm border border-neutral-200 bg-stone-50 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-red-700 hover:shadow-xl lg:grid-cols-[380px_1fr]">
+            <div class="grid items-center gap-12 rounded-sm border border-neutral-200 bg-stone-50 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-red-700 hover:shadow-xl lg:grid-cols-[240px_1fr]">
 
                 <!-- Afiša -->
 
@@ -231,6 +452,96 @@
             </div>
 
         </a>
+        <div class="mt-16 border-t border-neutral-200 pt-16">   
+
+            <div class="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
+
+               
+                <!-- Afiša -->
+                <div style="display:flex; justify-content:center;">
+
+                    <button type="button"
+                            onclick="openPoster('/images/Events/RAA23072026/vienkarsi_sarezgiti.jpg')"
+                            aria-label="Palielināt afišu"
+                            class="poster-button">
+
+                        <img src="/images/Events/RAA23072026/vienkarsi_sarezgiti.jpg"
+                             alt="Dzejas lasījuma Vienkārši sarežģīti afiša"
+                             class="poster-image" />
+
+                        <span class="poster-overlay">
+                            <span class="poster-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="24"
+                                     height="24"
+                                     viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="2"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="7"></circle>
+                                    <line x1="20" y1="20" x2="16.5" y2="16.5"></line>
+                                </svg>
+                            </span>
+                        </span>
+
+                    </button>
+
+                </div>
+                <!-- Informācija -->
+                <div>
+
+                    <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                        23.07.2026 · 19:30
+                    </p>
+
+                    <h3 class="mt-5 text-4xl font-light leading-tight text-neutral-950 md:text-5xl">
+                        Vienkārši sarežģīti
+                    </h3>
+
+                    <p class="mt-6 text-lg leading-8 text-neutral-600">
+                        Kultūras telpā <strong>RAA</strong> norisināsies dzejas vakars,
+                        iedvesmojoties no šaha spēles un situācijām, kas ir vienkārši sarežģītas.
+                    </p>
+
+                    <div class="mt-8">
+                        <p class="text-sm uppercase tracking-[0.25em] text-red-700">
+                            Dzeju lasīs
+                        </p>
+
+                        <p class="mt-4 leading-8 text-neutral-600">
+                            Evelīna Mūrniece, Džonatans Melgalvis, Dainis Deigelis,
+                            Linda Tīmane, Andris Alps, Laima Ābele, Ilze Kuzmicka,
+                            Kristīne Jučkoviča un Dita Putniņa.
+                        </p>
+                    </div>
+
+                    <div class="mt-8">
+                        <p class="text-sm uppercase tracking-[0.25em] text-red-700">
+                            Muzikālais viesis
+                        </p>
+
+                        <p class="mt-4 text-lg text-neutral-700">
+                            Zoya Zoyroko
+                        </p>
+                    </div>
+
+                    <a href="https://www.instagram.com/raa_riga/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="mt-10 inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                        Kultūras telpa RAA
+
+                        <span aria-hidden="true">→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -297,4 +608,124 @@
         </div>
 
     </div>
+    <button id="backToTop"
+            type="button"
+            aria-label="Atgriezties lapas augšpusē"
+            style="
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        width: 48px;
+        height: 48px;
+        border: 1px solid #d4d4d4;
+        border-radius: 9999px;
+        background: white;
+        color: #404040;
+        font-size: 24px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        cursor: pointer;
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        ">
+        ↑
+    </button>
+
+    <script>
+            const backToTopButton = document.getElementById("backToTop");
+
+            function updateBackToTopButton() {
+                if (window.scrollY > 400) {
+                    backToTopButton.style.opacity = "1";
+                    backToTopButton.style.visibility = "visible";
+                    backToTopButton.style.pointerEvents = "auto";
+                } else {
+                    backToTopButton.style.opacity = "0";
+                    backToTopButton.style.visibility = "hidden";
+                    backToTopButton.style.pointerEvents = "none";
+                }
+            }
+
+            window.addEventListener("scroll", updateBackToTopButton);
+
+            backToTopButton.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            updateBackToTopButton();
+    </script>
 </section>
+<div id="posterModal"
+     onclick="closePoster()"
+     style="
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0,0,0,0.88);
+    cursor: zoom-out;
+    ">
+
+    <button type="button"
+            onclick="closePoster()"
+            aria-label="Aizvērt afišu"
+            style="
+        position: fixed;
+        top: 20px;
+        right: 24px;
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 36px;
+        cursor: pointer;
+        ">
+        ×
+    </button>
+
+    <img id="posterModalImage"
+         src=""
+         alt="Palielināta pasākuma afiša"
+         onclick="event.stopPropagation()"
+         style="
+    display: block;
+    max-width: 95vw;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    cursor: default;
+    " />
+</div>
+
+<script>
+    function openPoster(imagePath) {
+        const modal = document.getElementById("posterModal");
+        const image = document.getElementById("posterModalImage");
+
+        image.src = imagePath;
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closePoster() {
+        const modal = document.getElementById("posterModal");
+
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closePoster();
+        }
+    });
+</script>
