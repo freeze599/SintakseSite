@@ -89,6 +89,13 @@ namespace SintakseSite.Controllers
         },
         new()
         {
+            Name = "Meldra Ķemere",
+            Image = "MeldraK.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 25%"
+        },
+        new()
+        {
             Name = "Pauls Kauķis",
             Image = "PaulsK.jpg",
             Categories = "Dzeja",
