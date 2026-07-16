@@ -8,7 +8,95 @@ namespace SintakseSite.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var authors = new List<AuthorViewModel>
+    {
+        new()
+        {
+            Name = "Aļesja Loseva",
+            Image = "Alesja.jpg",
+            Categories = "Dzeja · atdzeja",
+            ObjectPosition = "center 25%"
+        },
+        new()
+        {
+            Name = "Andris Alps",
+            Image = "Alps.jpg",
+            Categories = "Dzeja · proza",
+            ObjectPosition = "center 30%"
+        },
+        new()
+        {
+            Name = "Arnolds Ščuckis",
+            Image = "Arnolds.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 30%"
+        },
+        new()
+        {
+            Name = "Daina Šteinerte",
+            Image = "DainaSt.jpg",
+            Categories = "Dzeja · horeogrāfija",
+            ObjectPosition = "center 35%"
+        },
+        new()
+        {
+            Name = "Dainis Deigelis",
+            Image = "DainisD.jpg",
+            Categories = "Dzeja · atdzeja · proza",
+            ObjectPosition = "center 35%"
+        },
+        new()
+        {
+            Name = "Dita Putniņa",
+            Image = "DitaP.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 30%"
+        },
+        new()
+        {
+            Name = "Ilze Kuzmicka",
+            Image = "IlzeK.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 25%"
+        },
+        new()
+        {
+            Name = "Kaspars Sils",
+            Image = "KasparsS.jpg",
+            Categories = "Mūzika",
+            ObjectPosition = "center 25%"
+        },
+        new()
+        {
+            Name = "Katrīna Jēkabsone",
+            Image = "KatrinaJ.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 30%"
+        },
+        new()
+        {
+            Name = "Kristīne Jučkoviča",
+            Image = "KristineJ.jpg",
+            Categories = "Dzeja · proza · rakstniecība",
+            ObjectPosition = "center 25%"
+        },
+        new()
+        {
+            Name = "Laima Ābele",
+            Image = "Laima.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 25%"
+        },
+        new()
+        {
+            Name = "Pauls Kauķis",
+            Image = "PaulsK.jpg",
+            Categories = "Dzeja",
+            ObjectPosition = "center 25%"
+        }
+    };
+
+            return View(authors);
         }
 
         public IActionResult Privacy()

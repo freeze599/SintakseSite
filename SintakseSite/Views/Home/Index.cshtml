@@ -1,6 +1,10 @@
-﻿@{
+﻿@model IReadOnlyList<SintakseSite.Models.AuthorViewModel>
+
+@{
     ViewData["Title"] = "Sākums";
 }
+
+
 <style>
     .poster-button {
         position: relative;
@@ -58,6 +62,39 @@
 
     .poster-button:hover .poster-icon {
         transform: scale(1);
+    }
+
+    .author-frame {
+        width: 280px;
+        height: 373px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+
+    .author-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(0);
+        opacity: 1;
+        transform: scale(1);
+        transition: filter 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    /* Datorā attēli melnbalti */
+    @@media (min-width: 768px) {
+        .author-image {
+            filter: grayscale(100%);
+            opacity: 0.9;
+        }
+
+        .author-card:hover .author-image {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.02);
+        }
     }
 </style>
 
@@ -120,7 +157,9 @@
     </div>
 </section>
 
-<section id="autori" class="border-t border-neutral-200 bg-white px-6 py-32">
+<section id="autori"
+         class="border-t border-neutral-200 bg-white px-6 py-32">
+
     <div class="mx-auto max-w-6xl">
 
         <div class="mb-16 text-center">
@@ -131,226 +170,32 @@
 
         <div class="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
 
-            <!-- Aļesja Loseva -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/Alesja.jpg"
-                         alt="Aļesja Loseva"
-                         style="object-position: center 25%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
+            @foreach (var author in Model)
+            {
+                <article class="author-card text-center">
 
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Aļesja Loseva
-                </h3>
+                    <div class="author-frame">
+                        <img src="/images/Autori/@author.Image"
+                             alt="@author.Name"
+                             loading="lazy"
+                             style="object-position: @author.ObjectPosition;"
+                             class="author-image" />
+                    </div>
 
-                <p class="mt-2 text-neutral-500">
-                    Dzeja · atdzeja
-                </p>
-            </div>
+                    <h3 class="mt-4 text-2xl text-neutral-950">
+                        @author.Name
+                    </h3>
 
-            <!-- Andris Alps -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/Alps.jpg"
-                         alt="Andris Alps"
-                         style="object-position: center 30%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
+                    <p class="mt-1 text-neutral-500">
+                        @author.Categories
+                    </p>
 
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Andris Alps
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja · proza
-                </p>
-            </div>
-
-            <!-- Arnolds Ščuckis -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/Arnolds.jpg"
-                         alt="Arnolds Ščuckis"
-                         style="object-position: center 30%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Arnolds Ščuckis
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja
-                </p>
-            </div>
-
-            <!-- Daina Šteinerte -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/DainaSt.jpg"
-                         alt="Daina Šteinerte"
-                         style="object-position: center 35%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Daina Šteinerte
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja · horeogrāfija
-                </p>
-            </div>
-
-            <!-- Dainis Deigelis -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/DainisD.jpg"
-                         alt="Dainis Deigelis"
-                         style="object-position: center 35%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Dainis Deigelis
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja · atdzeja · proza
-                </p>
-            </div>
-
-            <!-- Dita Putniņa -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/DitaP.jpg"
-                         alt="Dita Putniņa"
-                         style="object-position: center 30%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Dita Putniņa
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja
-                </p>
-            </div>
-
-            <!-- Ilze Kuzmicka -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/IlzeK.jpg"
-                         alt="Ilze Kuzmicka"
-                         style="object-position: center 25%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Ilze Kuzmicka
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja
-                </p>
-            </div>
-
-            <!-- Kaspars Sils -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/KasparsS.jpg"
-                         alt="Kaspars Sils"
-                         style="object-position: center 25%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Kaspars Sils
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Mūzika
-                </p>
-            </div>
-
-            <!-- Katrīna Jēkabsone -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/KatrinaJ.jpg"
-                         alt="Katrīna Jēkabsone"
-                         style="object-position: center 30%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Katrīna Jēkabsone
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja
-                </p>
-            </div>
-
-            <!-- Kristīne Jučkoviča -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/KristineJ.jpg"
-                         alt="Kristīne Jučkoviča"
-                         style="object-position: center 25%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Kristīne Jučkoviča
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja · proza · rakstniecība
-                </p>
-            </div>
-
-            <!-- Laima Ābele -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/Laima.jpg"
-                         alt="Laima Ābele"
-                         style="object-position: center 25%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Laima Ābele
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja
-                </p>
-            </div>
-
-            <!-- Pauls Kauķis -->
-            <div class="group text-center">
-                <div class="mx-auto max-w-[280px] overflow-hidden rounded-sm">
-                    <img src="/images/Autori/PaulsK.jpg"
-                         alt="Pauls Kauķis"
-                         style="object-position: center 25%;"
-                         class="aspect-[3/4] w-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:scale-[1.02] group-hover:grayscale-0 group-hover:opacity-100" />
-                </div>
-
-                <h3 class="mt-6 text-2xl text-neutral-950">
-                    Pauls Kauķis
-                </h3>
-
-                <p class="mt-2 text-neutral-500">
-                    Dzeja
-                </p>
-            </div>
+                </article>
+            }
 
         </div>
     </div>
 </section>
-        
 
    
 
@@ -632,7 +477,30 @@
         ">
         ↑
     </button>
+    <footer class="border-t border-neutral-200 bg-neutral-950 px-6 py-10 text-neutral-300">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
 
+        <div>
+            <p class="text-sm uppercase tracking-[0.25em] text-neutral-500">
+                Mājaslapas izstrāde
+            </p>
+
+            <p class="mt-2 text-lg text-white">
+                Arnolds Ščuckis
+            </p>
+        </div>
+
+        <a href="mailto:TAVS-EPASTS"
+           class="text-sm text-neutral-400 transition hover:text-white">
+            arnolds.scuckis@inbox.lv
+        </a>
+
+        <p class="text-sm text-neutral-500">
+            © @DateTime.Now.Year Sintakses Stupors
+        </p>
+
+    </div>
+</footer>
     <script>
             const backToTopButton = document.getElementById("backToTop");
 
