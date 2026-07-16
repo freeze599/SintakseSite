@@ -1,0 +1,48 @@
+﻿Git push
+
+git status
+git add .
+git status
+git commit -m "Apraksts par izmaiņām"
+git push
+git status
+
+
+Deploy
+
+1. Pieslēgties serverim
+
+Windows PowerShell:
+
+ssh root@46.62.226.210
+2. Aiziet uz projekta mapi
+cd /var/www/sintakse/source/SintakseSite
+3. Paņemt jaunākās izmaiņas no GitHub
+git pull
+4. Nopublicēt projektu
+dotnet publish -c Release -o /var/www/sintakse/publish
+
+Sagaidi:
+
+Build succeeded.
+5. Pārstartēt mājaslapas servisu
+sudo systemctl restart sintakse
+6. Pārbaudīt, vai viss darbojas
+sudo systemctl status sintakse
+
+Jāredz:
+
+Active: active (running)
+
+No statusa skata iziet ar:
+
+q
+7. Pārbaudīt lapu
+
+Atver:
+
+https://sintakse.lv
+
+Ja vēl rāda veco versiju:
+
+Ctrl + F5
