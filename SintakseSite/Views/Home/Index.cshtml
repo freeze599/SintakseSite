@@ -251,7 +251,7 @@
 
         @if (Model.UpcomingEvents.Any())
         {
-            <div class="space-y-16">
+            <div class="space-y-32 lg:space-y-20">
                 @foreach (var eventItem in Model.UpcomingEvents)
                 {
                     <article class="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
@@ -358,9 +358,9 @@
 
         @if (Model.PastEvents.Any())
         {
-            <div class="mt-64 -mx-6 border-y border-neutral-200 bg-neutral-100 px-6 py-28 md:-mx-12 md:px-12">
+            <div class="mt-40 border-y border-neutral-200 bg-neutral-100 px-6 py-20 sm:mt-48 sm:py-24 lg:mt-64 lg:px-12 lg:py-28">
 
-                <div class="mb-12 text-center">
+                <div class="mb-16 text-center">
                     <p class="text-sm uppercase tracking-[0.35em] text-red-700">
                         Arhīvs
                     </p>
