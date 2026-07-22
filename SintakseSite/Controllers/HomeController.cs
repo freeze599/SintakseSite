@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SintakseSite.Models;
 using System.Diagnostics;
+using SintakseSite.Data;
 
 namespace SintakseSite.Controllers
 {
@@ -103,7 +104,24 @@ namespace SintakseSite.Controllers
         }
     };
 
-            return View(authors);
+            var today = DateTime.Today;
+
+            var viewModel = new HomePageViewModel
+            {
+                Authors = authors,
+
+                UpcomingEvents = EventData.Events
+                    .Where(e => e.Date.Date >= today)
+                    .OrderBy(e => e.Date)
+                    .ToList(),
+
+                PastEvents = EventData.Events
+                    .Where(e => e.Date.Date < today)
+                    .OrderByDescending(e => e.Date)
+                    .ToList()
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

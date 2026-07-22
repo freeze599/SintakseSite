@@ -1,4 +1,4 @@
-﻿@model IReadOnlyList<SintakseSite.Models.AuthorViewModel>
+﻿@model SintakseSite.Models.HomePageViewModel
 
 @{
     ViewData["Title"] = "Sākums";
@@ -173,8 +173,8 @@
         </div>
 
         <div class="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-
-            @foreach (var author in Model)
+            
+            @foreach (var author in Model.Authors)
             {
                 <article class="author-card text-center">
 
@@ -234,161 +234,194 @@
     </div>
 
 </section>
-<section id="pasakumi" class="border-t border-neutral-200 bg-white px-6 py-32">
+<section id="pasakumi"
+         class="border-t border-neutral-200 bg-white px-6 py-32">
+
     <div class="mx-auto max-w-6xl">
 
         <div class="mb-20 text-center">
-            <p class="text-sm uppercase tracking-   [0.35em] text-red-700">
+            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
                 Pasākumi
             </p>
 
-            <h2 class="mt-6 mb-16 text-5xl md:text-7xl font-light tracking-tight text-neutral-950">
+            <h2 class="mt-6 text-5xl font-light tracking-tight text-neutral-950 md:text-7xl">
                 Tuvākie notikumi
             </h2>
-
         </div>
 
-        <!-- Cēsu pilsētas svētki -->
-        <article class="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
+        @if (Model.UpcomingEvents.Any())
+        {
+            <div class="space-y-16">
+                @foreach (var eventItem in Model.UpcomingEvents)
+                {
+                    <article class="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
 
-            <div class="flex justify-center">
-                <button type="button"
-                        onclick="openPoster('/images/Events/Cesis2026/cesis2026-18-07.png')"
-                        aria-label="Palielināt Cēsu pilsētas svētku afišu"
-                        class="poster-button">
+                        <div class="flex justify-center">
+                            <button type="button"
+                                    onclick="openPoster('@eventItem.PosterImage')"
+                                    aria-label="Palielināt @eventItem.Title afišu"
+                                    class="poster-button">
 
-                    <img src="/images/Events/Cesis2026/cesis2026-18-07.png"
-                         alt="Cēsu pilsētas svētku afiša"
-                         class="poster-image" />
+                                <img src="@eventItem.PosterImage"
+                                     alt="@eventItem.Title afiša"
+                                     class="poster-image" />
 
-                    <span class="poster-overlay">
-                        <span class="poster-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 width="24"
-                                 height="24"
-                                 viewBox="0 0 24 24"
-                                 fill="none"
-                                 stroke="currentColor"
-                                 stroke-width="2"
-                                 stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 aria-hidden="true">
-                                <circle cx="11" cy="11" r="7"></circle>
-                                <line x1="20" y1="20" x2="16.5" y2="16.5"></line>
-                            </svg>
-                        </span>
-                    </span>
-                </button>
+                                <span class="poster-overlay">
+                                    <span class="poster-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="2"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round"
+                                             aria-hidden="true">
+
+                                            <circle cx="11" cy="11" r="7"></circle>
+                                            <line x1="20"
+                                                  y1="20"
+                                                  x2="16.5"
+                                                  y2="16.5">
+                                            </line>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                                @eventItem.Date.ToString("dd.MM.yyyy")
+                                ·
+                                @eventItem.Time
+                            </p>
+
+                            <h3 class="mt-5 text-4xl font-light leading-tight text-neutral-950 md:text-5xl">
+                                @eventItem.Title
+                            </h3>
+
+                            <p class="mt-6 text-lg leading-8 text-neutral-600">
+                                @eventItem.Description
+                            </p>
+
+                            @if (!string.IsNullOrWhiteSpace(eventItem.Participants))
+                            {
+                                <div class="mt-8">
+                                    <p class="text-sm uppercase tracking-[0.25em] text-red-700">
+                                        Dzeju lasīs
+                                    </p>
+
+                                    <p class="mt-4 leading-8 text-neutral-600">
+                                        @eventItem.Participants
+                                    </p>
+                                </div>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(eventItem.MusicalGuest))
+                            {
+                                <div class="mt-8">
+                                    <p class="text-sm uppercase tracking-[0.25em] text-red-700">
+                                        Muzikālais viesis
+                                    </p>
+
+                                    <p class="mt-4 text-lg text-neutral-700">
+                                        @eventItem.MusicalGuest
+                                    </p>
+                                </div>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(eventItem.ExternalUrl))
+                            {
+                                <a href="@eventItem.ExternalUrl"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="mt-10 inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                                    @eventItem.ExternalLinkText
+                                    <span aria-hidden="true">→</span>
+                                </a>
+                            }
+                        </div>
+
+                    </article>
+                }
             </div>
+        }
+        else
+        {
+            <p class="text-center text-lg text-neutral-500">
+                Pašlaik jauni pasākumi nav izziņoti.
+            </p>
+        }
 
-            <div>
-                <p class="text-sm uppercase tracking-[0.35em] text-red-700">
-                    18.07.2026 · 17:00
-                </p>
+        @if (Model.PastEvents.Any())
+        {
+            <div class="mt-64 -mx-6 border-y border-neutral-200 bg-neutral-100 px-6 py-28 md:-mx-12 md:px-12">
 
-                <h3 class="mt-5 text-4xl font-light leading-tight text-neutral-950 md:text-5xl">
-                    Cēsu pilsētas svētki
-                </h3>
-
-                <p class="mt-6 text-lg leading-8 text-neutral-600">
-                    K-Sils un <strong>Sintakses Stupors</strong> Cēsu pilsētas svētku programmā.
-                </p>
-
-                <a href="https://pasakumi.cesis.lv/pasakums/svetki-cesis-820/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="mt-10 inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
-
-                    Plašāka informācija
-                    <span aria-hidden="true">→</span>
-                </a>
-            </div>
-
-        </article>
-
-        <div class="mt-16 border-t border-neutral-200 pt-16">
-
-            <!-- Vienkārši sarežģīti -->
-            <article class="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
-
-                <div class="flex justify-center">
-                    <button type="button"
-                            onclick="openPoster('/images/Events/RAA23072026/vienkarsi_sarezgiti.jpg')"
-                            aria-label="Palielināt afišu"
-                            class="poster-button">
-
-                        <img src="/images/Events/RAA23072026/vienkarsi_sarezgiti.jpg"
-                             alt="Dzejas lasījuma Vienkārši sarežģīti afiša"
-                             class="poster-image" />
-
-                        <span class="poster-overlay">
-                            <span class="poster-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     width="24"
-                                     height="24"
-                                     viewBox="0 0 24 24"
-                                     fill="none"
-                                     stroke="currentColor"
-                                     stroke-width="2"
-                                     stroke-linecap="round"
-                                     stroke-linejoin="round"
-                                     aria-hidden="true">
-                                    <circle cx="11" cy="11" r="7"></circle>
-                                    <line x1="20" y1="20" x2="16.5" y2="16.5"></line>
-                                </svg>
-                            </span>
-                        </span>
-                    </button>
-                </div>
-
-                <div>
+                <div class="mb-12 text-center">
                     <p class="text-sm uppercase tracking-[0.35em] text-red-700">
-                        23.07.2026 · 19:30
+                        Arhīvs
                     </p>
 
-                    <h3 class="mt-5 text-4xl font-light leading-tight text-neutral-950 md:text-5xl">
-                        Vienkārši sarežģīti
+                    <h3 class="mt-5 text-4xl font-light text-neutral-950 md:text-5xl">
+                        Notikušie pasākumi
                     </h3>
-
-                    <p class="mt-6 text-lg leading-8 text-neutral-600">
-                        Kultūras telpā <strong>RAA</strong> norisināsies dzejas vakars,
-                        iedvesmojoties no šaha spēles un situācijām, kas ir vienkārši sarežģītas.
-                    </p>
-
-                    <div class="mt-8">
-                        <p class="text-sm uppercase tracking-[0.25em] text-red-700">
-                            Dzeju lasīs
-                        </p>
-
-                        <p class="mt-4 leading-8 text-neutral-600">
-                            Evelīna Mūrniece, Džonatans Melgalvis, Dainis Deigelis,
-                            Linda Tīmane, Andris Alps, Laima Ābele, Ilze Kuzmicka,
-                            Kristīne Jučkoviča un Dita Putniņa.
-                        </p>
-                    </div>
-
-                    <div class="mt-8">
-                        <p class="text-sm uppercase tracking-[0.25em] text-red-700">
-                            Muzikālais viesis
-                        </p>
-
-                        <p class="mt-4 text-lg text-neutral-700">
-                            Zoya Zoyroko
-                        </p>
-                    </div>
-
-                    <a href="https://www.instagram.com/raa_riga/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="mt-10 inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
-
-                        Kultūras telpa RAA
-                        <span aria-hidden="true">→</span>
-                    </a>
                 </div>
 
-            </article>
-        </div>
+                <div class="divide-y divide-neutral-200">
+
+                    @foreach (var eventItem in Model.PastEvents)
+                    {
+                        <article class="grid gap-6 py-8 md:grid-cols-[160px_1fr_auto] md:items-center">
+
+                            <div>
+                                <p class="text-sm uppercase tracking-[0.2em] text-red-700">
+                                    @eventItem.Date.ToString("dd.MM.yyyy")
+                                </p>
+
+                                <p class="mt-2 text-sm text-neutral-500">
+                                    @eventItem.Time
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 class="text-3xl font-light text-neutral-950">
+                                    @eventItem.Title
+                                </h4>
+
+                                <p class="mt-3 max-w-2xl leading-7 text-neutral-600">
+                                    @eventItem.Description
+                                </p>
+                            </div>
+
+                            <div>
+                                @if (!string.IsNullOrWhiteSpace(eventItem.GallerySlug))
+                                {
+                                    <a asp-controller="Gallery"
+                                       asp-action="Details"
+                                       asp-route-slug="@eventItem.GallerySlug"
+                                       class="inline-flex items-center gap-3 border border-neutral-300 px-5 py-3 text-sm uppercase tracking-[0.2em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                                        Skatīt galeriju
+                                        <span aria-hidden="true">→</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-sm uppercase tracking-[0.2em] text-neutral-400">
+                                        Galerija drīzumā
+                                    </span>
+                                }
+                            </div>
+
+                        </article>
+                    }
+
+                </div>
+            </div>
+        }
 
     </div>
 </section>
