@@ -1,0 +1,350 @@
+﻿@model SintakseSite.Models.GalleryViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<style>
+    .gallery-page {
+        min-height: 100vh;
+        padding: 40px 24px 70px;
+        background: #f5f5f4;
+    }
+
+    .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .gallery-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 45px;
+    }
+
+        .gallery-navigation a {
+            color: #57534e;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+            .gallery-navigation a:hover {
+                color: #171717;
+            }
+
+    .gallery-heading {
+        max-width: 700px;
+        margin: 0 auto 50px;
+        text-align: center;
+    }
+
+        .gallery-heading time {
+            color: #737373;
+            font-size: 14px;
+        }
+
+        .gallery-heading h1 {
+            margin: 12px 0 15px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(42px, 6vw, 70px);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .gallery-heading p {
+            margin: 0;
+            color: #57534e;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .gallery-thumbnail {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        background: #e7e5e4;
+        cursor: zoom-in;
+        aspect-ratio: 4 / 3;
+    }
+
+        .gallery-thumbnail img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .gallery-thumbnail:hover img {
+            transform: scale(1.035);
+        }
+
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 80px;
+        background: rgba(0, 0, 0, 0.94);
+    }
+
+        .lightbox.is-open {
+            display: flex;
+        }
+
+    .lightbox-image {
+        display: block;
+        max-width: 100%;
+        max-height: 88vh;
+        object-fit: contain;
+    }
+
+    .lightbox-close,
+    .lightbox-arrow {
+        position: absolute;
+        border: 0;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        z-index: 10000;
+    }
+
+    .lightbox-close {
+        top: 18px;
+        right: 25px;
+        padding: 10px;
+        font-size: 45px;
+        line-height: 1;
+    }
+
+    .lightbox-arrow {
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 20px;
+        font-size: 65px;
+        line-height: 1;
+    }
+
+    .lightbox-previous {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-counter {
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+    }
+
+    @@media (max-width: 850px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .lightbox {
+            padding: 55px 45px;
+        }
+    }
+
+    @@media (max-width: 560px) {
+        .gallery-page {
+            padding: 25px 15px 50px;
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .gallery-navigation {
+            margin-bottom: 35px;
+        }
+
+        .lightbox {
+            padding: 55px 12px;
+        }
+
+        .lightbox-arrow {
+            padding: 10px;
+            font-size: 45px;
+        }
+    }
+</style>
+
+<section class="gallery-page">
+    <div class="gallery-container">
+
+        <div class="gallery-navigation">
+            <a asp-controller="Gallery" asp-action="Index">
+                ← Atpakaļ uz galerijām
+            </a>
+
+            <a asp-controller="Home" asp-action="Index">
+                Uz sākumlapu
+            </a>
+        </div>
+
+        <div class="gallery-heading">
+            <time>@Model.Date.ToString("dd.MM.yyyy")</time>
+
+            <h1>@Model.Title</h1>
+
+            <p>@Model.Description</p>
+        </div>
+
+        <div class="gallery-grid">
+            @for (var i = 0; i < Model.Images.Count; i++)
+            {
+                <button type="button"
+                        class="gallery-thumbnail"
+                        data-image-index="@i"
+                        aria-label="Atvērt attēlu @(i + 1)">
+
+                    <img src="@Model.Images[i]"
+                         alt="@Model.Title — attēls @(i + 1)"
+                         loading="lazy" />
+                </button>
+            }
+        </div>
+    </div>
+</section>
+
+<div id="galleryLightbox"
+     class="lightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Attēlu galerija">
+
+    <button id="lightboxClose"
+            type="button"
+            class="lightbox-close"
+            aria-label="Aizvērt">
+        ×
+    </button>
+
+    <button id="lightboxPrevious"
+            type="button"
+            class="lightbox-arrow lightbox-previous"
+            aria-label="Iepriekšējais attēls">
+        ‹
+    </button>
+
+    <img id="lightboxImage"
+         class="lightbox-image"
+         src=""
+         alt="" />
+
+    <button id="lightboxNext"
+            type="button"
+            class="lightbox-arrow lightbox-next"
+            aria-label="Nākamais attēls">
+        ›
+    </button>
+
+    <div id="lightboxCounter"
+         class="lightbox-counter">
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = @Html.Raw(
+                        System.Text.Json.JsonSerializer.Serialize(Model.Images)
+                );
+
+        const lightbox = document.getElementById("galleryLightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+        const closeButton = document.getElementById("lightboxClose");
+        const previousButton = document.getElementById("lightboxPrevious");
+        const nextButton = document.getElementById("lightboxNext");
+        const thumbnails = document.querySelectorAll(".gallery-thumbnail");
+
+        let currentIndex = 0;
+
+        function showImage(index) {
+            if (!images.length) {
+                return;
+            }
+
+            currentIndex = (index + images.length) % images.length;
+            lightboxImage.src = images[currentIndex];
+            lightboxImage.alt =
+                `@Model.Title — attēls ${currentIndex + 1}`;
+
+            lightboxCounter.textContent =
+                `${currentIndex + 1} / ${images.length}`;
+        }
+
+        function openLightbox(index) {
+            showImage(index);
+            lightbox.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove("is-open");
+            lightboxImage.src = "";
+            document.body.style.overflow = "";
+        }
+
+        thumbnails.forEach(function (thumbnail) {
+            thumbnail.addEventListener("click", function () {
+                openLightbox(
+                    Number(thumbnail.dataset.imageIndex)
+                );
+            });
+        });
+
+        closeButton.addEventListener("click", closeLightbox);
+
+        previousButton.addEventListener("click", function () {
+            showImage(currentIndex - 1);
+        });
+
+        nextButton.addEventListener("click", function () {
+            showImage(currentIndex + 1);
+        });
+
+        lightbox.addEventListener("click", function (event) {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (!lightbox.classList.contains("is-open")) {
+                return;
+            }
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+            if (event.key === "ArrowLeft") {
+                showImage(currentIndex - 1);
+            }
+
+            if (event.key === "ArrowRight") {
+                showImage(currentIndex + 1);
+            }
+        });
+    });
+</script>

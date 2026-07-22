@@ -1,0 +1,252 @@
+﻿@model IEnumerable<SintakseSite.Models.GalleryViewModel>
+
+@{
+    ViewData["Title"] = "Galerija";
+}
+
+<style>
+    .gallery-index-page {
+        min-height: 100vh;
+        padding: 40px 24px 80px;
+        background: #f5f5f4;
+    }
+
+    .gallery-index-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .gallery-home-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #57534e;
+        font-size: 15px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+        .gallery-home-link:hover {
+            color: #171717;
+        }
+
+    .gallery-index-heading {
+        max-width: 700px;
+        margin: 45px auto 65px;
+        text-align: center;
+    }
+
+        .gallery-index-heading .eyebrow {
+            margin: 0 0 14px;
+            color: #737373;
+            font-size: 13px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+        }
+
+        .gallery-index-heading h1 {
+            margin: 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(52px, 7vw, 78px);
+            font-weight: 400;
+            line-height: 1;
+            color: #171717;
+        }
+
+        .gallery-index-heading .intro {
+            max-width: 600px;
+            margin: 22px auto 0;
+            color: #57534e;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+    .gallery-albums {
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+    }
+
+    .gallery-album {
+        display: grid;
+        grid-template-columns: minmax(0, 390px) minmax(0, 1fr);
+        align-items: center;
+        gap: 48px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .gallery-cover-link {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        background: #e7e5e4;
+        text-decoration: none;
+    }
+
+        .gallery-cover-link img {
+            display: block;
+            width: 100%;
+            height: 285px;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .gallery-cover-link:hover img {
+            transform: scale(1.025);
+        }
+
+    .gallery-album-content time {
+        display: block;
+        color: #737373;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+    }
+
+    .gallery-album-content h2 {
+        margin: 10px 0 0;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 4vw, 46px);
+        font-weight: 400;
+        line-height: 1.05;
+        color: #171717;
+    }
+
+    .gallery-album-content p {
+        margin: 18px 0 0;
+        color: #57534e;
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    .gallery-open-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 26px;
+        padding: 13px 24px;
+        border: 1px solid #171717;
+        color: #171717;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+        .gallery-open-button:hover {
+            background: #171717;
+            color: white;
+        }
+
+    .gallery-empty {
+        margin-top: 60px;
+        color: #737373;
+        text-align: center;
+    }
+
+    @@media (max-width: 760px) {
+        .gallery-index-page {
+            padding: 28px 16px 60px;
+        }
+
+        .gallery-index-heading {
+            margin-top: 38px;
+            margin-bottom: 48px;
+        }
+
+            .gallery-index-heading .intro {
+                font-size: 16px;
+            }
+
+        .gallery-album {
+            grid-template-columns: 1fr;
+            gap: 26px;
+            max-width: 520px;
+        }
+
+        .gallery-cover-link img {
+            height: auto;
+            aspect-ratio: 16 / 10;
+        }
+
+        .gallery-album-content {
+            text-align: left;
+        }
+    }
+</style>
+
+<section class="gallery-index-page">
+    <div class="gallery-index-container">
+
+        <a asp-controller="Home"
+           asp-action="Index"
+           class="gallery-home-link">
+            <span aria-hidden="true">←</span>
+            Uz sākumlapu
+        </a>
+
+        <header class="gallery-index-heading">
+            <p class="eyebrow">
+                Sintakses Stupors
+            </p>
+
+            <h1>Galerija</h1>
+
+            <p class="intro">
+                Bildes no pasākumiem.
+            </p>
+        </header>
+
+        @if (!Model.Any())
+        {
+            <p class="gallery-empty">
+                Galerijas vēl nav pievienotas.
+            </p>
+        }
+        else
+        {
+            <div class="gallery-albums">
+                @foreach (var gallery in Model)
+                {
+                    <article class="gallery-album">
+
+                        <a asp-controller="Gallery"
+                           asp-action="Details"
+                           asp-route-slug="@gallery.Slug"
+                           class="gallery-cover-link">
+
+                            <img src="@gallery.CoverImage"
+                                 alt="@gallery.Title"
+                                 loading="lazy" />
+                        </a>
+
+                        <div class="gallery-album-content">
+                            <time>
+                                @gallery.Date.ToString("dd.MM.yyyy")
+                            </time>
+
+                            <h2>
+                                @gallery.Title
+                            </h2>
+
+                            <p>
+                                @gallery.Description
+                            </p>
+
+                            <a asp-controller="Gallery"
+                               asp-action="Details"
+                               asp-route-slug="@gallery.Slug"
+                               class="gallery-open-button">
+                                Skatīt galeriju
+                                <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+
+                    </article>
+                }
+            </div>
+        }
+
+    </div>
+</section>

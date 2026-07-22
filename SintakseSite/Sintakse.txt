@@ -46,3 +46,8 @@ https://sintakse.lv
 Ja vēl rāda veco versiju:
 
 Ctrl + F5
+
+Par cik ir zutaisīts deploy.sh 
+tad vnk pieslēdzamies caur @ssh root@
+un palaižam 
+/var/www/sintakse/deploy.sh
