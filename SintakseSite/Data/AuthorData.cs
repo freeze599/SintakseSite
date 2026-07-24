@@ -110,7 +110,7 @@ namespace SintakseSite.Data
             {
                 Name = "Zane Brūvere-Kvēpa",
                 Image = "ZaneB.jpg",
-                Categories = "Dzeja · Tulkošana · Redakcija",
+                Categories = "Dzeja · Tulkošana · Redakcijasts",
                 ObjectPosition = "center 25%",
                 Description = "(1983) – dzejniece, tulkotāja, redaktore. Valkas novada literārās apvienības vadītāja. Raksta dzeju, kā arī vada dzejas meistardarbnīcas bērniem. Bijusi turku valodas pasniedzēja Latvijas Universitātē, projektu vadītāja Nodarbinātības valsts aģentūrā, kā arī sabiedrisko attiecību speciāliste Valkas novada domē un Rakstniecības un mūzikas muzejā, redaktore Dzintaru koncertzālē. Tulkojusi no lietuviešu un turku valodas."
             }
