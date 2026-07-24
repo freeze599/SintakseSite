@@ -279,7 +279,7 @@
             </p>
 
             <h2 class="mt-6 text-5xl md:text-7xl font-light tracking-tight text-neutral-950">
-                Atskats no pasākumiem
+                Atskats uz pasākumiem
             </h2>
 
             <p class="mx-auto mt-8 max-w-3xl text-lg leading-8 text-neutral-600">
@@ -786,16 +786,20 @@
                 const closeButton = card.querySelector("[data-author-close]");
                 const description = card.querySelector(".author-book-description");
 
-                const openCard = () => {
-                    card.classList.add("is-open");
-                    openButton?.setAttribute("aria-expanded", "true");
-                    description?.setAttribute("aria-hidden", "false");
+                        const openCard = () => {
+            card.classList.add("is-opening");
 
-                    window.setTimeout(() => {
-                        closeButton?.focus();
-                    }, 900);
-                };
+            window.setTimeout(() => {
+                card.classList.add("is-open");
+                openButton?.setAttribute("aria-expanded", "true");
+                description?.setAttribute("aria-hidden", "false");
+            }, 120);
 
+            window.setTimeout(() => {
+                card.classList.remove("is-opening");
+                closeButton?.focus();
+            }, 1020);
+        };
                 const closeCard = () => {
                     card.classList.remove("is-open");
                     openButton?.setAttribute("aria-expanded", "false");

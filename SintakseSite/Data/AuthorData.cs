@@ -92,6 +92,14 @@ namespace SintakseSite.Data
                 Categories = "Dzeja",
                 ObjectPosition = "center 25%"
             },
+             new()
+            {
+                Name = "Laura Steimāre",
+                Image = "LauraS.jpg",
+                Categories = "Dzeja",
+                ObjectPosition = "center 25%",
+                Description = "Brīvdienās – dzejniece, darba dienās – preču komplektētāja. Piedalījusies dzejas slamos un apguvusi dzejas teoriju Literārajā akadēmijā. Publicēta kopkrājumos \"Kā tauriņi\" (2014), \"Manas vasaras stāsts\" (2015), \"Zemteksts\" (2020) un \"Mani apsteidza vējš\". Izdoti arī divi autores dzejoļu krājumi – \"Asni\" (2017) un \"Vibrācijas\" (2024).\r\n"
+            },
             new()
             {
                 Name = "Meldra Ķemere",
@@ -110,10 +118,11 @@ namespace SintakseSite.Data
             {
                 Name = "Zane Brūvere-Kvēpa",
                 Image = "ZaneB.jpg",
-                Categories = "Dzeja · Tulkošana · Redakcijasts",
+                Categories = "Dzeja · Tulkošana · Redakcija",
                 ObjectPosition = "center 25%",
                 Description = "(1983) – dzejniece, tulkotāja, redaktore. Valkas novada literārās apvienības vadītāja. Raksta dzeju, kā arī vada dzejas meistardarbnīcas bērniem. Bijusi turku valodas pasniedzēja Latvijas Universitātē, projektu vadītāja Nodarbinātības valsts aģentūrā, kā arī sabiedrisko attiecību speciāliste Valkas novada domē un Rakstniecības un mūzikas muzejā, redaktore Dzintaru koncertzālē. Tulkojusi no lietuviešu un turku valodas."
             }
+            
         };
     }
 }

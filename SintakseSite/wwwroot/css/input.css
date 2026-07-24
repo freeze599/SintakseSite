@@ -169,3 +169,87 @@
         transition: none;
     }
 }
+/* Smalkāka grāmatas sajūta */
+
+.author-book-content {
+    overflow: visible;
+}
+
+/* Papīra lapa */
+.author-book-description {
+    background: #fafaf8;
+    box-shadow: inset 4px 0 0 rgba(255, 255, 255, 0.95), inset 8px 0 10px rgba(0, 0, 0, 0.035);
+}
+
+    .author-book-description::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient( 0deg, rgba(30, 30, 20, 0.012) 0, rgba(30, 30, 20, 0.012) 1px, transparent 1px, transparent 4px );
+    }
+
+    /* Plāna lapu maliņa kreisajā pusē */
+    .author-book-description::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 3px;
+        width: 4px;
+        pointer-events: none;
+        background: linear-gradient( to right, rgba(0, 0, 0, 0.09), rgba(255, 255, 255, 0.95) );
+        opacity: 0.55;
+    }
+
+.author-book-description-inner {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+/* Vāks atveroties mazliet paceļas */
+.author-book-card.is-open .author-book-cover {
+    transform: translateY(-3px) rotateY(-168deg);
+}
+
+/* Smalka ēna no atvērtā vāka */
+.author-book-card.is-open .author-book-cover {
+    box-shadow: 20px 14px 30px rgba(0, 0, 0, 0.22), 4px 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Norāde parādās lēni */
+.author-book-hint {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 450ms ease, transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.author-book-card:not(.is-open) .author-book-cover:hover .author-book-hint,
+.author-book-card:not(.is-open) .author-book-cover:focus-visible .author-book-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Īss gaidīšanas kursors atvēršanās laikā */
+.author-book-card.is-opening {
+    cursor: progress;
+}
+
+    .author-book-card.is-opening .author-book-cover {
+        cursor: progress;
+    }
+
+/* Telefonā norādei jābūt redzamai arī bez hover */
+@media (hover: none) {
+    .author-book-hint {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .author-book-card.is-open .author-book-cover {
+        transform: translateY(-2px) rotateY(-178deg);
+    }
+}
