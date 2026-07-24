@@ -14,7 +14,12 @@ Deploy
 
 Windows PowerShell:
 
-ssh root@46.62.226.210
+1) ssh root@46.62.226.210
+2)
+
+/var/www/sintakse/deploy.sh
+
+
 2. Aiziet uz projekta mapi
 cd /var/www/sintakse/source/SintakseSite
 3. Paņemt jaunākās izmaiņas no GitHub
@@ -50,4 +55,4 @@ Ctrl + F5
 Par cik ir zutaisīts deploy.sh 
 tad vnk pieslēdzamies caur @ssh root@
 un palaižam 
-/var/www/sintakse/deploy.sh
+

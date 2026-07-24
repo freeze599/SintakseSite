@@ -54,7 +54,7 @@ public static class EventData
 
             MusicalGuest = "Zoya Zoyroko",
 
-            GallerySlug = null
+            GallerySlug = "vienkarsi-sarezgiti-2026"
         },
         new EventViewModel
 {
