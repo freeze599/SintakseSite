@@ -177,15 +177,79 @@
             
             @foreach (var author in Model.Authors)
             {
+                var hasDescription = !string.IsNullOrWhiteSpace(author.Description);
+
                 <article class="author-card text-center">
 
-                    <div class="author-frame">
-                        <img src="/images/Autori/@author.Image"
-                             alt="@author.Name"
-                             loading="lazy"
-                             style="object-position: @author.ObjectPosition;"
-                             class="author-image" />
-                    </div>
+                    @if (hasDescription)
+                    {
+                        <div class="author-book-card"
+                             data-author-card>
+
+                            <div class="author-book-content author-frame">
+
+                                <div class="author-book-description"
+                                     aria-hidden="true">
+
+                                    <div class="author-book-description-inner">
+
+                                        <h3 class="author-book-title">
+                                            @author.Name
+                                        </h3>
+
+                                        <div class="author-book-text">
+                                            @foreach (var paragraph in author.Description!
+                                                .Split(
+                                                    new[] { "\r\n\r\n", "\n\n" },
+                                                    StringSplitOptions.RemoveEmptyEntries))
+                                            {
+                                                <p>@paragraph.Trim()</p>
+                                            }
+                                        </div>
+
+                                        <button type="button"
+                                                class="author-book-close"
+                                                data-author-close>
+                                            ← Atpakaļ
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <button type="button"
+                                        class="author-book-cover"
+                                        data-author-open
+                                        aria-label="Atvērt aprakstu par @author.Name"
+                                        aria-expanded="false">
+
+                                    <img src="/images/Autori/@author.Image"
+                                         alt="@author.Name"
+                                         loading="lazy"
+                                         style="object-position: @author.ObjectPosition;"
+                                         class="author-image" />
+
+                                    <span class="author-book-hint">
+                                        Lasīt aprakstu
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="author-frame">
+
+                            <img src="/images/Autori/@author.Image"
+                                 alt="@author.Name"
+                                 loading="lazy"
+                                 style="object-position: @author.ObjectPosition;"
+                                 class="author-image" />
+
+                        </div>
+                    }
 
                     <h3 class="mt-4 text-2xl text-neutral-950">
                         @author.Name
@@ -196,6 +260,7 @@
                     </p>
 
                 </article>
+            }
             }
 
         </div>
@@ -711,3 +776,45 @@
         }
     });
 </script>
+
+@section Scripts
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("[data-author-card]").forEach(card => {
+                const openButton = card.querySelector("[data-author-open]");
+                const closeButton = card.querySelector("[data-author-close]");
+                const description = card.querySelector(".author-book-description");
+
+                const openCard = () => {
+                    card.classList.add("is-open");
+                    openButton?.setAttribute("aria-expanded", "true");
+                    description?.setAttribute("aria-hidden", "false");
+
+                    window.setTimeout(() => {
+                        closeButton?.focus();
+                    }, 900);
+                };
+
+                const closeCard = () => {
+                    card.classList.remove("is-open");
+                    openButton?.setAttribute("aria-expanded", "false");
+                    description?.setAttribute("aria-hidden", "true");
+
+                    window.setTimeout(() => {
+                        openButton?.focus();
+                    }, 300);
+                };
+
+                openButton?.addEventListener("click", openCard);
+                closeButton?.addEventListener("click", closeCard);
+
+                card.addEventListener("keydown", event => {
+                    if (event.key === "Escape" && card.classList.contains("is-open")) {
+                        closeCard();
+                    }
+                });
+            });
+        });
+    </script>
+}

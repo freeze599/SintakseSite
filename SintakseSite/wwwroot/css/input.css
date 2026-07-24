@@ -3,3 +3,169 @@
 .hero-title {
     font-family: 'Cormorant Garamond', serif;
 }
+.author-book-card {
+    position: relative;
+    width: 100%;
+}
+
+.author-book-content {
+    position: relative;
+    width: 100%;
+}
+
+.author-book-cover,
+.author-book-description {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.author-book-cover {
+    border: 0;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+    .author-book-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.author-book-description {
+    background: white;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.author-book-description-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.author-book-text {
+    flex: 1;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.author-book-title {
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.author-book-close {
+    margin-top: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.author-book-hint {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    background: rgba(255,255,255,.9);
+    padding: .4rem .8rem;
+    font-size: .8rem;
+    border-radius: 999px;
+}
+.author-book-card {
+    perspective: 1600px;
+}
+
+.author-book-content {
+    transform-style: preserve-3d;
+}
+
+.author-book-cover {
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 600ms ease, filter 400ms ease;
+    will-change: transform;
+}
+
+    .author-book-cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient( to right, rgba(0, 0, 0, 0.14), transparent 14% );
+        opacity: 0;
+        transition: opacity 500ms ease;
+    }
+
+.author-book-card:not(.is-open) .author-book-cover:hover {
+    transform: rotateY(-5deg);
+    box-shadow: 14px 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+    .author-book-card:not(.is-open) .author-book-cover:hover::after {
+        opacity: 0.35;
+    }
+
+.author-book-card.is-open .author-book-cover {
+    transform: rotateY(-168deg);
+    box-shadow: 18px 12px 28px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+    .author-book-card.is-open .author-book-cover::after {
+        opacity: 0.65;
+    }
+
+.author-book-description {
+    opacity: 0;
+    transition: opacity 300ms ease 180ms;
+}
+
+.author-book-card.is-open .author-book-description {
+    opacity: 1;
+}
+
+.author-book-description-inner {
+    background: linear-gradient( 90deg, rgba(0, 0, 0, 0.045), transparent 12% ), repeating-linear-gradient( 0deg, rgba(0, 0, 0, 0.012) 0, rgba(0, 0, 0, 0.012) 1px, transparent 1px, transparent 4px ), #fff;
+}
+
+.author-book-hint {
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.author-book-card.is-open .author-book-hint {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+.author-book-close {
+    color: #525252;
+    transition: color 200ms ease, transform 200ms ease;
+}
+
+    .author-book-close:hover {
+        color: #171717;
+        transform: translateX(-4px);
+    }
+
+@media (max-width: 640px) {
+    .author-book-card.is-open .author-book-cover {
+        transform: rotateY(-178deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .author-book-cover,
+    .author-book-description,
+    .author-book-hint,
+    .author-book-close {
+        transition: none;
+    }
+}
