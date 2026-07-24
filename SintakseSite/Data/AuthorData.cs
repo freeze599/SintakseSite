@@ -53,7 +53,8 @@ namespace SintakseSite.Data
                 Name = "Ilze Kuzmicka",
                 Image = "IlzeK.jpg",
                 Categories = "Dzeja",
-                ObjectPosition = "center 25%"
+                ObjectPosition = "center 25%",
+                Description = "Ir trīs bērnu mamma, dravniece, dabas mīle un paliatīvās aprūpes darbiniece. Viņas ikdiena rit starp bišu stropiem, cilvēku aprūpi un tekstu rindām. Ilzes pasaule ir cieši saistīta ar dabu un cilvēka trauslumu, taču tikpat svarīga viņai ir arī sociālā telpa — viņa ir kvīrs un mazslodzes aktīviste. Tas izpaužas gan balsī, dziedot Rīgas Kvīru korī, gan klātbūtnē piketos un protestos.\r\nRadošajā darbībā viņa raksta dzeju un ir daļa no dzejnieku apvienības \"Sintakses Stupors\". Ilzei ir svarīgi dzeju iznest ārpus lapas robežām, tāpēc viņa veido un piedalās performancēs ar dzejas elementiem un dažādos lasījumos. Viņas dzeja publicēta  \"Avīzes nosaukums\" numuros, \"Vecāku būšana: pirmā gada stāsti\".\r\nSavos tekstos viņa nedistancējas, bet raksta caur tiešo pieredzi: ķermenisko, emocionālo un garīgo. Lai šo valodu slīpētu, Ilze divus gadus mācījusies Latvijas Rakstnieku savienības dzejas meistarklasēs \"Literārajā akadēmijā\" pie Ronalda Brieža, Toma Treiberga un Ivara Šteinberga. Viņa plāno mācības turpināt, uztverot rakstīšanu kā nepārtrauktu pilnveidošanās procesu."
             },
             new()
             {
@@ -109,8 +110,9 @@ namespace SintakseSite.Data
             {
                 Name = "Zane Brūvere-Kvēpa",
                 Image = "ZaneB.jpg",
-                Categories = "Dzeja",
-                ObjectPosition = "center 25%"
+                Categories = "Dzeja · Tulkošana · Redakcija",
+                ObjectPosition = "center 25%",
+                Description = "(1983) – dzejniece, tulkotāja, redaktore. Valkas novada literārās apvienības vadītāja. Raksta dzeju, kā arī vada dzejas meistardarbnīcas bērniem. Bijusi turku valodas pasniedzēja Latvijas Universitātē, projektu vadītāja Nodarbinātības valsts aģentūrā, kā arī sabiedrisko attiecību speciāliste Valkas novada domē un Rakstniecības un mūzikas muzejā, redaktore Dzintaru koncertzālē. Tulkojusi no lietuviešu un turku valodas."
             }
         };
     }
