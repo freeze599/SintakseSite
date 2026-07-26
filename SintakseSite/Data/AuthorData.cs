@@ -26,7 +26,8 @@ namespace SintakseSite.Data
                 Name = "Arnolds Ščuckis",
                 Image = "Arnolds.jpg",
                 Categories = "Dzeja",
-                ObjectPosition = "center 30%"
+                ObjectPosition = "center 30%",
+                Description = "Literārās akadēmijas absolvents. Dzeja publicēta žurnālos \"Domuzīme\" un \"Jaunā Gaita\", kā arī literārajos izdevumos \"Kultūrzīmes\" un \"Konteksts\". Savos tekstos apvieno ikdienas novērojumus, sirreālas metaforas un eksistenciālas tēmas, veidojot asociācijām bagātu un atpazīstamu rokrakstu. Piedalījies dzejas lasījumos un citos literāros pasākumos, meklējot arvien jaunus veidus, kā dzejai piešķirt balsi un klātbūtni."
             },
             new()
             {
