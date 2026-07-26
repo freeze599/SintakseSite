@@ -114,7 +114,8 @@ namespace SintakseSite.Data
                 Name = "Pauls Kauķis",
                 Image = "PaulsK.jpg",
                 Categories = "Dzeja",
-                ObjectPosition = "center 25%"
+                ObjectPosition = "center 25%",
+                Description = "Raksta dzeju. Absolvējis \"Literārās Akadēmijas\" dzejas meistardarbnīcas Katrīnas Rudzītes (2023) un Ivara Šteinberga (2024) vadībā. Kopš 2022. gada ikgadu piedalās dzejas lasījumos \"Dzejas dienu\" ietvaros un publicējas literatūras žurnālos. Dzejā ir svarīga skaņa un ritms; otrais skaņu dzejnieks Latvijā.\r\n"
             },
             new()
             {
