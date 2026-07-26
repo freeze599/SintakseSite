@@ -99,7 +99,7 @@ namespace SintakseSite.Data
                 Image = "LauraS.jpg",
                 Categories = "Dzeja",
                 ObjectPosition = "center 25%",
-                Description = "Brīvdienās – dzejniece, darba dienās – preču komplektētāja. Piedalījusies dzejas slamos un apguvusi dzejas teoriju Literārajā akadēmijā. Publicēta kopkrājumos \"Kā tauriņi\" (2014), \"Manas vasaras stāsts\" (2015), \"Zemteksts\" (2020) un \"Mani apsteidza vējš\". Izdoti arī divi autores dzejoļu krājumi – \"Asni\" (2017) un \"Vibrācijas\" (2024).\r\n"
+                Description = "Brīvdienās – dzejniece, darba dienās – preču komplektētāja. Piedalījusies dzejas slamos un apguvusi dzejas teoriju Literārajā akadēmijā. Publicēta kopkrājumos \"Kā tauriņi\" (2014), \"Manas vasaras stāsts\" (2015), \"Zemteksts\" (2020) un \"Mani apsteidza vējš\". Izdoti arī divi autores dzejoļu krājumi – \"Asni\" (2017) un \"Vibrācijas\" (2024).\r\n\r\nKopš 2005. gada aktīvi iesaistās LGBT kopienas aktivitātēs. Filmējusi, montējusi video un fotografējusi dažādus pasākumus un notikumus."
             },
             new()
             {
