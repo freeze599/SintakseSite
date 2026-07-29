@@ -41,7 +41,8 @@ namespace SintakseSite.Data
                 Name = "Dainis Deigelis",
                 Image = "DainisD.jpg",
                 Categories = "Dzeja · atdzeja · proza",
-                ObjectPosition = "center 35%"
+                ObjectPosition = "center 35%",
+                Description = "(1983) – dzejnieks un atdzejotājs. Dzeju latviešu periodikā publicē kopš 2002. gada, regulāri publicējoties dažādos kultūras un literatūras izdevumos. 2018. gadā izdots debijas dzejoļu krājums Dievs beidz, kas nominēts Latvijas Literatūras gada balvai kategorijā \"Spilgtākā debija\". 2020. gadā iznācis otrais krājums Pilsētā mirstošas saules ēnā, bet 2024. gadā – trešais dzejoļu krājums Izdzīvojušie. Tajā pašā gadā bijis arī viens no grāmatas Dzejas detektīvi līdzautoriem. Pašlaik atrodas jaunu radošo meklējumu ceļā gan literatūrā, gan dzīvē, strādājot pie ceturtā dzejoļu krājuma, kura iznākšana plānota 2026. gadā."
             },
             new()
             {

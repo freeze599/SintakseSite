@@ -14,7 +14,7 @@ Deploy
 
 Windows PowerShell:
 
-1) ssh root@46.62.226.210
+1)	
 2)
 
 /var/www/sintakse/deploy.sh
