@@ -88,5 +88,29 @@ public static class EventData
 
     GallerySlug = null
 },
+        new EventViewModel
+{
+    Slug = "sintakses-stupors-kalejos-2026",
+
+    Title = "Sintakses Stupors – Kalējos 2026",
+
+    Date = new DateTime(2026, 6, 6),
+
+    Time = "",
+
+    Description =
+        "Dzejas grupas \"Sintakses Stupors\" pasākums Kalējos.",
+
+    PosterImage =
+        "/images/Gallery/Kalejos2026/Kalejos1.jpg",
+
+    ExternalUrl = null,
+
+    Participants = null,
+
+    MusicalGuest = null,
+
+    GallerySlug = "sintakses-stupors-kalejos-2026"
+},
     };
 }

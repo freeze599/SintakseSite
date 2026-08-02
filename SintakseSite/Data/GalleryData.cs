@@ -47,7 +47,55 @@ public static class GalleryData
             }
         },
 
+        new GalleryViewModel
+{
+    Slug = "sintakses-stupors-kalejos-2026",
 
+    Title = "Sintakses Stupors Kalējos 2026",
+
+    Description =
+        "Dzejas grupas \"Sintakses Stupors\" pasākums Kalējos 2026. gada 6. jūnijā.",
+
+    Date = new DateTime(2026, 6, 6),
+
+    CoverImage =
+        "/images/Gallery/StuporsKaleji2026/KalejiCover.jpg",
+
+    Images = new()
+    {
+        "/images/Gallery/StuporsKaleji2026/Kaleji1.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji2.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji3.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji4.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji5.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji6.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji7.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji8.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji9.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji10.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji11.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji12.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji13.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji14.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji15.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji16.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji17.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji18.jpg",
+        "/images/Gallery/StuporsKaleji2026/Kaleji19.jpg",
+      
+          "/images/Gallery/StuporsKaleji2026/Kaleji21.jpg",
+           "/images/Gallery/StuporsKaleji2026/Kaleji22.jpg",
+            "/images/Gallery/StuporsKaleji2026/Kaleji23.jpg",
+             "/images/Gallery/StuporsKaleji2026/Kaleji24.jpg",
+              "/images/Gallery/StuporsKaleji2026/Kaleji25.jpg",
+               "/images/Gallery/StuporsKaleji2026/Kaleji26.jpg",
+                "/images/Gallery/StuporsKaleji2026/Kaleji27.jpg",
+                 "/images/Gallery/StuporsKaleji2026/Kaleji28.jpg",
+
+
+
+    }
+},
 
     };
 }
