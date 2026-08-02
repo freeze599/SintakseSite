@@ -15,9 +15,9 @@ Deploy
 Windows PowerShell:
 
 1)	
-2)
-
 /var/www/sintakse/deploy.sh
+
+
 
 
 2. Aiziet uz projekta mapi

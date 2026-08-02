@@ -43,7 +43,20 @@ public static class GalleryData
                 "/images/Events/Vnksarezgiti2026/Vnksarezgiti4.jpg",
                 "/images/Events/Vnksarezgiti2026/Vnksarezgiti5.jpg",
                 "/images/Events/Vnksarezgiti2026/Vnksarezgiti6.jpg",
-                "/images/Events/Vnksarezgiti2026/Vnksarezgiti7.jpg"
+                "/images/Events/Vnksarezgiti2026/Vnksarezgiti7.jpg",
+                "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti8.jpg",
+                 "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti9.jpg",
+                  "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti10.jpg",
+                   "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti11.jpg",
+                    "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti12.jpg",
+                     "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti13.jpg",
+                      "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti14.jpg",
+                       "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti15.jpg",
+                        "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti16.jpg",
+                         "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti17.jpg",
+                          "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti18.jpg",
+                           "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti19.jpg",
+                            "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti20.jpg"
             }
         },
 
