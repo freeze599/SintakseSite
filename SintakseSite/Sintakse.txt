@@ -11,10 +11,10 @@ git status
 Deploy
 
 1. Pieslēgties serverim
-
+ssh root@46.62.226.210
 Windows PowerShell:
 
-1)	
+2)	
 /var/www/sintakse/deploy.sh
 
 

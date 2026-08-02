@@ -112,5 +112,39 @@ public static class EventData
 
     GallerySlug = "sintakses-stupors-kalejos-2026"
 },
+        new EventViewModel
+{
+    Slug = "dzejas-nakts-pargajiens-2026",
+
+    Title = "Sintakses Stupors Dzejas nakts pārgājienā",
+
+    Date = new DateTime(2026, 8, 29),
+
+    Time = "10:20",
+
+    Description =
+        "No 29. līdz 30. augustam norisināsies Dzejas nakts pārgājiens, " +
+        "kas sāksies pie Inčukalna stacijas un turpināsies dažādās Inčukalna, " +
+        "Murjāņu, Krimuldas un Siguldas vietās. Programmā paredzēti dzejas lasījumi, " +
+        "performances, Baltijas dzejas slams, muzikāli priekšnesumi un brīvais mikrofons. " +
+        "Plkst. 15.20 Murjāņos ar 25 minūšu dzejas performanci uzstāsies grupa " +
+        "\"Sintakses Stupors\".",
+
+    PosterImage =
+        "/images/Events/DzejasPargajiens2026/PargajiensCover.jpg",
+
+    ExternalUrl =   "https://www.facebook.com/groups/794118732167465",
+
+    ExternalLinkText = "Plašāka informācija",
+
+    Participants =
+        "Arnolds Ščuckis, Alesya, Andris Alps, Kristīne Jučkoviča un Ilze Kuzmicka.",
+
+    MusicalGuest = null,
+
+    Organizer = "",
+
+    GallerySlug = null
+},
     };
 }
