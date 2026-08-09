@@ -138,7 +138,7 @@ public static class EventData
     ExternalLinkText = "Plašāka informācija",
 
     Participants =
-        "Arnolds Ščuckis, Alesya, Andris Alps, Kristīne Jučkoviča un Ilze Kuzmicka.",
+        "Arnolds Ščuckis, Alesya Ščucka, Laima Ābele, Andris Alps, Kristīne Jučkoviča un Ilze Kuzmicka.",
 
     MusicalGuest = null,
 
