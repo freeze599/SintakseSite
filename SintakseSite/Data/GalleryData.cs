@@ -109,6 +109,39 @@ public static class GalleryData
 
     }
 },
+         new GalleryViewModel
+{
+    Slug = "Vel-apmacies-2026",
 
+    Title = "Andra Alpa dzejas krājuma \"Vēl apmācies\" atklāšana",
+
+    Description =
+        "Andra Alpa dzejas krājuma \"Vēl apmācies\" atklāšana 2026. gada 8. augustā.",
+
+    Date = new DateTime(2026, 8, 8),
+
+    CoverImage =
+        "/images/Gallery/VelApmacies2026/VelApmaciesCover.jpg",
+
+    Images = new()
+    {
+        "/images/Gallery/VelApmacies2026/1.jpg",
+        "/images/Gallery/VelApmacies2026/2.jpg",
+        "/images/Gallery/VelApmacies2026/3.jpg",
+        "/images/Gallery/VelApmacies2026/4.jpg",
+        "/images/Gallery/VelApmacies2026/5.jpg",
+        "/images/Gallery/VelApmacies2026/6.jpg",
+        "/images/Gallery/VelApmacies2026/7.jpg",
+        "/images/Gallery/VelApmacies2026/8.jpg",
+        "/images/Gallery/VelApmacies2026/9.jpg",
+        "/images/Gallery/VelApmacies2026/10.jpg",
+        "/images/Gallery/VelApmacies2026/11.jpg",
+        "/images/Gallery/VelApmacies2026/12.jpg",
+        "/images/Gallery/VelApmacies2026/13.jpg",
+        "/images/Gallery/VelApmacies2026/14.jpg",
+        "/images/Gallery/VelApmacies2026/15.jpg",
+        "/images/Gallery/VelApmacies2026/16.jpg",
+
+    } }
     };
 }
