@@ -133,12 +133,12 @@ public static class EventData
     PosterImage =
         "/images/Events/DzejasPargajiens2026/PargajiensCover.jpg",
 
-    ExternalUrl =   "https://www.facebook.com/groups/794118732167465",
+    ExternalUrl =   "https://www.facebook.com/events/2301626657038997/?acontext=%7B%22event_action_history%22%3A[%7B%22mechanism%22%3A%22search_results%22%2C%22surface%22%3A%22search%22%7D]%2C%22ref_notif_type%22%3Anull%7D",
 
     ExternalLinkText = "Plašāka informācija",
 
     Participants =
-        "Arnolds Ščuckis, Alesya Ščucka, Laima Ābele, Andris Alps, Kristīne Jučkoviča un Ilze Kuzmicka.",
+        "Arnolds Ščuckis, Alesya Ščucka, Laima Ābele, Andris Alps, Kristīne Jučkoviča, Ilze Kuzmicka, Evelīna Mūrniece, Elza Dobičina",
 
     MusicalGuest = null,
 
