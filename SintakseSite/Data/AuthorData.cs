@@ -34,7 +34,8 @@ namespace SintakseSite.Data
                 Name = "Daina Šteinerte",
                 Image = "DainaSt.jpg",
                 Categories = "Dzeja · horeogrāfija",
-                ObjectPosition = "center 35%"
+                ObjectPosition = "center 35%",
+                Description = "Daina Šteinerte ir audiovizuālā un starpdisciplinārā māksliniece, dzejniece un scenogrāfe. Viņa ieguvusi maģistra grādu scenogrāfijā Latvijas Mākslas akadēmijā (2019), bet pirms tam absolvējusi LMA metāla dizaina/rotu programmu. Viņas radošajā darbībā savienojas scenogrāfija, performance, kustība, eksperimentālā animācija, gaisma, telpa un skaņa."
             },
             new()
             {
