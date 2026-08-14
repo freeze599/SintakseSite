@@ -74,7 +74,8 @@ namespace SintakseSite.Data
                 Name = "Kaspars Sils",
                 Image = "KasparsS.jpg",
                 Categories = "Mūzika",
-                ObjectPosition = "center 25%"
+                ObjectPosition = "center 25%",
+                Description = "Kaspars Sils — elektroniskās mūzikas mākslinieks, kura radošā darbība saistīta ar Latvijas neatkarīgās un eksperimentālās elektroniskās mūzikas vidi. Darbojies arī ar vārdu K-inspace, bet kā K. Sils pārstāvēts Cēsu elektroniskās mūzikas izlasē. Savā darbībā pievēršas elektroniskajai skaņradei un skaņas mijiedarbībai ar citām mākslas formām. “Sintakses Stupora” performancēs veido skaņas telpu, savienojot elektronisko mūziku ar dzeju un performanci."
             },
             new()
             {
