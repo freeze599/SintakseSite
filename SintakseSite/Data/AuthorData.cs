@@ -51,6 +51,15 @@ namespace SintakseSite.Data
                 Categories = "Dzeja",
                 ObjectPosition = "center 30%"
             },
+             new()
+            {
+                Name = "Grejs",
+                Image = "Grejs.jpg",
+                Categories = "Slavenība",
+                ObjectPosition = "center 30%",
+                Description = "Wau, wau!"
+            },
+
             new()
             {
                 Name = "Ilze Kuzmicka",
