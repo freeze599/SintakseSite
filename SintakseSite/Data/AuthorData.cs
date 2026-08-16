@@ -19,7 +19,8 @@ namespace SintakseSite.Data
                 Name = "Andris Alps",
                 Image = "Alps.jpg",
                 Categories = "Dzeja · proza",
-                ObjectPosition = "center 30%"
+                ObjectPosition = "center 30%",
+                Description = "Andris Alps (1988) ir dzejnieks un prozaiķis. Absolvējis Literāro akadēmiju, publicējies daudzos Latvijas literatūras medijos – tostarp žurnālos \"Domuzīme\", \"Strāva\", \"Jaunā Gaita\" un \"Kultūrzīmes\", kā arī tiešsaistes medijā \"Punctum\". Atsevišķi viņa teksti tulkoti angļu un ukraiņu valodā. Aktīvi piedalās dzejas lasījumos, kā arī pats tos organizē – Alps ir viens no dzejas grupas \"Sintakses Stupors\" dibinātājiem un vadītājiem. 2026. gadā izdevniecībā \"Orbīta\" iznācis viņa debijas krājums \"vēl apmācies\". "
             },
             new()
             {
