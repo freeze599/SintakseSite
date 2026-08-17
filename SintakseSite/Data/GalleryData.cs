@@ -141,6 +141,11 @@ public static class GalleryData
         "/images/Gallery/VelApmacies2026/14.jpg",
         "/images/Gallery/VelApmacies2026/15.jpg",
         "/images/Gallery/VelApmacies2026/16.jpg",
+        "/images/Gallery/VelApmacies2026/17.jpg",
+        "/images/Gallery/VelApmacies2026/18.jpg",
+        "/images/Gallery/VelApmacies2026/19.jpg",
+        "/images/Gallery/VelApmacies2026/20.jpg",
+        "/images/Gallery/VelApmacies2026/21.jpg",
 
     } }
     };
