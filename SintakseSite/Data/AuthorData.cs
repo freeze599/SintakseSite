@@ -12,7 +12,8 @@ namespace SintakseSite.Data
                 Name = "Aļesja Loseva",
                 Image = "Alesja.jpg",
                 Categories = "Dzeja · atdzeja",
-                ObjectPosition = "center 25%"
+                ObjectPosition = "center 25%",
+                Description = "Aļesja Loseva ir Latvijā dzimusi baltkrievu izcelsmes dzejniece un atdzejotāja. Viņas dzejā savijas latviešu, baltkrievu un krievu valodas un kultūras ietekmes. Šobrīd autore raksta dzeju latviešu valodā un atdzejo no baltkrievu valodas.\r\n\r\n2020. gadā absolvējusi Literārās akadēmijas dzejas meistardarbnīcu. Viņas dzeja un atdzejojumi publicēti izdevumos un literārajās platformās **“Satori”, “Rīgas Almanahs”, “konTEKSTS” un “Punctum”**, savukārt dzejoļi tulkoti angļu un zviedru valodā.\r\n\r\nAļesja piedalās dzejas lasījumos un citos literāros un kultūras pasākumos, savā radošajā darbībā pievēršoties arī baltkrievu literatūrai un tās aktualitātēm.\r\n"
             },
             new()
             {
