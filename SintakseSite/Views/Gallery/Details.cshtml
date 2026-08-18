@@ -5,6 +5,17 @@
 }
 
 <style>
+    .gallery-video {
+        overflow: hidden;
+    }
+
+        .gallery-video video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
     .gallery-page {
         min-height: 100vh;
         padding: 40px 24px 70px;
@@ -209,7 +220,6 @@
 
             <p>@Model.Description</p>
         </div>
-
         <div class="gallery-grid">
             @for (var i = 0; i < Model.Images.Count; i++)
             {
@@ -222,6 +232,16 @@
                          alt="@Model.Title — attēls @(i + 1)"
                          loading="lazy" />
                 </button>
+            }
+
+            @for (var i = 0; i < Model.Videos.Count; i++)
+            {
+                <div class="gallery-thumbnail gallery-video">
+                    <video controls preload="metadata">
+                        <source src="@Model.Videos[i]" type="video/mp4" />
+                        Tavs pārlūks neatbalsta video.
+                    </video>
+                </div>
             }
         </div>
     </div>

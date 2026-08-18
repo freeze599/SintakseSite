@@ -57,7 +57,13 @@ public static class GalleryData
                           "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti18.jpg",
                            "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti19.jpg",
                             "/images/Gallery/Vnksarezgiti2026/Vnksarezgiti20.jpg"
-            }
+            },
+
+            Videos = new()
+    {
+        "/images/Gallery/VnkSarezgiti2026/Veronika-web.mp4",
+
+    }
         },
 
         new GalleryViewModel

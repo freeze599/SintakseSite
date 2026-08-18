@@ -13,4 +13,6 @@ public class GalleryViewModel
     public string CoverImage { get; set; } = string.Empty;
 
     public List<string> Images { get; set; } = new();
+
+    public List<String> Videos { get; set; } = new();
 }
