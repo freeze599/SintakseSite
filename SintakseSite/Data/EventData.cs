@@ -86,7 +86,7 @@ public static class EventData
 
     MusicalGuest = "Artūrs Punte (pilsētas skaņu kompozīcijas) un Vārna (kokles spēle)",
 
-    GallerySlug = null
+    GallerySlug = "vel-apmacies-2026"
 },
         new EventViewModel
 {
@@ -144,7 +144,7 @@ public static class EventData
 
     Organizer = "",
 
-    GallerySlug = null
+    GallerySlug = "dzejas-nakts-pargajiens-2026"
 },
     };
 }
