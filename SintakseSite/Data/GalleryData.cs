@@ -101,7 +101,7 @@ public static class GalleryData
         "/images/Gallery/StuporsKaleji2026/Kaleji17.jpg",
         "/images/Gallery/StuporsKaleji2026/Kaleji18.jpg",
         "/images/Gallery/StuporsKaleji2026/Kaleji19.jpg",
-      
+
           "/images/Gallery/StuporsKaleji2026/Kaleji21.jpg",
            "/images/Gallery/StuporsKaleji2026/Kaleji22.jpg",
             "/images/Gallery/StuporsKaleji2026/Kaleji23.jpg",
@@ -153,6 +153,42 @@ public static class GalleryData
         "/images/Gallery/VelApmacies2026/20.jpg",
         "/images/Gallery/VelApmacies2026/21.jpg",
 
-    } }
-    };
-}
+    }
+         },
+
+        new GalleryViewModel
+{
+    Slug = "dzejas-nakts-pargajiens-2026",
+
+    Title = "Dzejas nakts pārgājiens 2026",
+
+    Description =
+        "Dzejas grupa \"Sintakses Stupors\" performē Dzejas nakts pārgājienā 2026.",
+
+    Date = new DateTime(2026, 8, 31),
+
+    CoverImage =
+        "/images/Gallery/DzejasNaktsPargajiens2026/dzgCover.jpg" +
+            "",
+
+    Images = new()
+    {
+        "/images/Gallery/DzejasNaktsPargajiens2026/dzg1.jpg",
+        "/images/Gallery/DzejasNaktsPargajiens2026/dzg2.jpg",
+        "/images/Gallery/DzejasNaktsPargajiens2026/dzg3.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg4.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg5.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg6.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg7.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg8.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg9.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg10.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg11.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg12.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg13.jpg",
+"/images/Gallery/DzejasNaktsPargajiens2026/dzg14.jpg",
+
+
+    },
+}};
+    }

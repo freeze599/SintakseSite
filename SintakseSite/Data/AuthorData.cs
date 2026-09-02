@@ -84,7 +84,8 @@ namespace SintakseSite.Data
                 Name = "Katrīna Jēkabsone",
                 Image = "KatrinaJ.jpg",
                 Categories = "Dzeja",
-                ObjectPosition = "center 30%"
+                ObjectPosition = "center 30%",
+                Description = "Pēc darba pieredzes un \"papīriem\" kordiriģente - diriģējusi vairākus korus, to skaitā izauklējusi Rīgas Kvīru kori, ar kuru kopā bijusi aktīva dziedošo protestu diriģente. Paralēli strādājusi kā mūzikas teorijas un vispārējo klavieru pedagogs. \r\nTaču vispār, kā pati teiktu, ir ar \"dubulto pilsonību\" - mūziķe un dzejniece. Raksta jau no bērnības, bet dzejai dziļāk pievērsusies studiju gados, publicējoties Facebook grupā Dzejas rupors. 2022. gadā beigusi Literāro Akadēmiju pie Toma Treiberga un Ronalda Brieža. Publicējusies izdevumos \"Avīzes nosaukums\", \"Rīgas Almanahs\", piedalījusies dzejas lasījumos neatkarīgi un kopā ar grupu Sintakses Stupors. Arī kā mūziķe blakus grupas biedram Kasparam Silam papildinājusi Sintakses Stupora lasījumus.\r\nPašlaik radoši bagātinās un darbojas Amsterdamā, tāpēc viendien varēs mājaslapā pie sava profila norādīt \"Dzeja/Mūzika\". \r\n"
             },
             new()
 {
