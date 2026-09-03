@@ -65,7 +65,7 @@ namespace SintakseSite.Data
 
             new()
             {
-                Name = "Ilze Kuzmicka",
+                Name = "Liesma Kuzmicka",
                 Image = "IlzeK.jpg",
                 Categories = "Dzeja",
                 ObjectPosition = "center 25%",
