@@ -146,5 +146,44 @@ public static class EventData
 
     GallerySlug = "dzejas-nakts-pargajiens-2026"
 },
-    };
-}
+  new EventViewModel
+{
+    Slug = "pieturzimes-tumsa-2026",
+
+    Title = "Pieturzīmes tumsā",
+
+    Date = new DateTime(2026, 10, 2),
+
+    Time = "19:00",
+
+    Description =
+        "2. oktobrī plkst. 19:00 Salamandras ielā 1, Juglā, notiks poētisks gājiens pamestas rūpnīcas tuneļos.\r\n\r\n" +
+        "Pasākuma programmā septiņas dzejas un mākslas stacijas, starp kurām kopīgi maldīsimies tuneļu pustumsā, " +
+        "izvairoties no strupceļiem un uzglūnošajām maldugunīm, kamēr ceļu mums izgaismos sveces un kabatas lukturīši.\r\n\r\n" +
+        "Piedalīsies dzejnieki un rakstnieki Džena Andersone, Dainis Deigelis, Andris Alps, Liesma Kuzmicka, " +
+        "Arnolds Ščuckis, Laima Ābele, kā arī mākslinieces Anete Grīnberga un Olīvija Zeta Survillo.\r\n\r\n" +
+        "Ilgums: aptuveni pusotra stunda.\r\n\r\n" +
+        "Ieejas maksa: 7,50 eiro. Biļetes iegādājamas pie ieejas vai iepriekšpārdošanā " +
+        "(saite tiks publicēta).\r\n\r\n" +
+        "Pasākums notiks rūpnīcas teritorijā, tāpēc, ja rodas grūtības ar norises vietas atrašanu, " +
+        "lūgums sazināties ar Veroniku pa tālruni 26487587.\r\n\r\n" +
+        "Vietu skaits ierobežots, tāpēc ieteicams biļetes iegādāties iepriekš.",
+
+    PosterImage = "/images/Events/Tuneli2026/tuneli.jpg",
+
+    LocationUrl = "https://maps.app.goo.gl/ft6Qnb2jtmRVsMnz7",
+
+    ExternalUrl = "https://www.facebook.com/events/1595627942034770",
+
+    ExternalLinkText = "Facebook pasākums",
+
+    Participants =
+        "Džena Andersone, Dainis Deigelis, Andris Alps, Liesma Kuzmicka, " +
+        "Arnolds Ščuckis, Laima Ābele, Anete Grīnberga un Olīvija Zeta Survillo.",
+
+    MusicalGuest = null,
+
+    GallerySlug = "pieturzimes-tumsa-2026"
+},
+        };
+    }

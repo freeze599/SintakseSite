@@ -398,18 +398,33 @@
                                 </div>
                             }
 
-                            @if (!string.IsNullOrWhiteSpace(eventItem.ExternalUrl))
-                            {
-                                <a href="@eventItem.ExternalUrl"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="mt-10 inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+                            <div class="mt-10 flex flex-wrap gap-4">
 
-                                    @eventItem.ExternalLinkText
-                                    <span aria-hidden="true">→</span>
-                                </a>
-                            }
-                        </div>
+                                @if (!string.IsNullOrWhiteSpace(eventItem.LocationUrl))
+                                {
+                                    <a href="@eventItem.LocationUrl"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                                        Atrašanās vieta
+                                        <span aria-hidden="true">↗</span>
+                                    </a>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(eventItem.ExternalUrl))
+                                {
+                                    <a href="@eventItem.ExternalUrl"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                                        @eventItem.ExternalLinkText
+                                        <span aria-hidden="true">→</span>
+                                    </a>
+                                }
+                                </div>
+                                </div>
 
                     </article>
                 }

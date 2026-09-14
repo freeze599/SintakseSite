@@ -24,5 +24,8 @@ public class EventViewModel
 
     public string? MusicalGuest { get; set; }
     public string Organizer { get; set; } = "";
+
+    public string? LocationUrl { get; set; }
+
 }
 
