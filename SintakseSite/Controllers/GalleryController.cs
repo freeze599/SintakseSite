@@ -14,7 +14,7 @@ public class GalleryController : Controller
     public IActionResult Details(string slug)
     {
         var gallery = GalleryData.Galleries
-            .FirstOrDefault(x => x.Slug == slug);
+            .FirstOrDefault(x => string.Equals(x.Slug, slug, StringComparison.OrdinalIgnoreCase));
 
         if (gallery == null)
             return NotFound();

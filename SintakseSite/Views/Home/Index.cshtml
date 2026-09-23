@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Sākums";
     var featuredEvent = Model.UpcomingEvents.OrderBy(e => e.Date).FirstOrDefault();
+    ViewData["Description"] = "Iepazīsti Sintakses Stupora autorus, uzzini par tuvākajiem dzejas lasījumiem un apskati fotogrāfijas no mūsu pasākumiem.";
+    ViewData["CanonicalPath"] = "/";
+    ViewData["SocialImage"] = featuredEvent?.PosterImage;
+    ViewData["SocialImageAlt"] = featuredEvent is null
+        ? "Sintakses Stupors"
+        : featuredEvent.Title + " — pasākuma afiša";
 }
 
 

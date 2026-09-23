@@ -2,6 +2,12 @@
 
 @{
     ViewData["Title"] = Model.Title;
+    ViewData["Description"] = string.IsNullOrWhiteSpace(Model.Description)
+        ? Model.Title + " — Sintakses Stupora pasākuma fotogalerija."
+        : Model.Description;
+    ViewData["CanonicalPath"] = Url.Action("Details", "Gallery", new { slug = Model.Slug });
+    ViewData["SocialImage"] = Model.CoverImage;
+    ViewData["SocialImageAlt"] = Model.Title + " — fotogalerija";
 }
 
 <style>

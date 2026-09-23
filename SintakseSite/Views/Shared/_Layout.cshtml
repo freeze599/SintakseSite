@@ -1,4 +1,32 @@
-﻿<!DOCTYPE html>
+﻿@{
+    const string siteName = "Sintakses Stupors";
+    const string siteOrigin = "https://sintakse.lv";
+    var pageTitle = ViewData["Title"] as string;
+    var fullTitle = string.IsNullOrWhiteSpace(pageTitle) || pageTitle == "Sākums"
+        ? siteName + " — dzeja, autori un pasākumi"
+        : pageTitle + " | " + siteName;
+    var description = ViewData["Description"] as string;
+    if (string.IsNullOrWhiteSpace(description))
+    {
+        description = "Sintakses Stupors — dzejas grupa, autoru darbi, literāri pasākumi un kopīgi piedzīvojumi.";
+    }
+    // Canonical uses the public domain, even when tested on localhost.
+    // Individual views supply their route; tracking parameters are excluded.
+    var canonicalPath = ViewData["CanonicalPath"] as string;
+    if (string.IsNullOrWhiteSpace(canonicalPath))
+    {
+        canonicalPath = Context.Request.PathBase.ToString() + Context.Request.Path.ToString();
+    }
+    var canonicalUrl = siteOrigin + "/" + canonicalPath.TrimStart('/');
+    var imagePath = ViewData["SocialImage"] as string;
+    if (string.IsNullOrWhiteSpace(imagePath))
+    {
+        imagePath = "/images/slogo3.png";
+    }
+    var socialImageUrl = siteOrigin + "/" + imagePath.TrimStart('/');
+    var socialImageAlt = ViewData["SocialImageAlt"] as string ?? siteName;
+}
+<!DOCTYPE html>
 <html lang="lv">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -19,32 +47,24 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
 
-    <title>Sintakses Stupors</title>
+    <title>@fullTitle</title>
+    <meta name="description" content="@description" />
+    <link rel="canonical" href="@canonicalUrl" />
 
-    <meta name="description"
-          content="Sintakses Stupors — vieta dzejai, prozai, autoriem un literāriem notikumiem." />
-
-    <link rel="canonical"
-          href="https://sintakse.lv/" />
-
-    <!-- Facebook, Messenger un citu platformu priekšskatījums -->
-    <meta property="og:type"
-          content="website" />
-
-    <meta property="og:locale"
-          content="lv_LV" />
-
-    <meta property="og:site_name"
-          content="Sintakses Stupors" />
-
-    <meta property="og:title"
-          content="Sintakses Stupors" />
-
-    <meta property="og:description"
-          content="Vieta dzejai, prozai, autoriem un literāriem notikumiem." />
-
-    <meta property="og:url"
-          content="https://sintakse.lv/" />
+    <!-- Social previews: all text is HTML-encoded by Razor. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="lv_LV" />
+    <meta property="og:site_name" content="@siteName" />
+    <meta property="og:title" content="@fullTitle" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:url" content="@canonicalUrl" />
+    <meta property="og:image" content="@socialImageUrl" />
+    <meta property="og:image:alt" content="@socialImageAlt" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@fullTitle" />
+    <meta name="twitter:description" content="@description" />
+    <meta name="twitter:image" content="@socialImageUrl" />
+    <meta name="twitter:image:alt" content="@socialImageAlt" />
 
     <!-- Fonti -->
     <link rel="preconnect"

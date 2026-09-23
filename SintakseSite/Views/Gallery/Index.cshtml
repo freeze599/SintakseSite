@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<SintakseSite.Models.GalleryViewModel>
 
 @{
-    ViewData["Title"] = "Galerija";
+    ViewData["Title"] = "Pasākumu galerija";
+    ViewData["Description"] = "Fotogrāfijas no Sintakses Stupora dzejas lasījumiem, performancēm un literārajām satikšanās reizēm.";
+    ViewData["CanonicalPath"] = Url.Action("Index", "Gallery");
+    var socialGallery = Model.OrderByDescending(g => g.Date)
+        .FirstOrDefault(g => !string.IsNullOrWhiteSpace(g.CoverImage));
+    ViewData["SocialImage"] = socialGallery?.CoverImage;
+    ViewData["SocialImageAlt"] = socialGallery?.Title ?? "Sintakses Stupors";
 }
 
 <style>
