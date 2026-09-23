@@ -60,6 +60,10 @@
                     {
                         <a class="event-button" href="@Model.LocationUrl" target="_blank" rel="noopener noreferrer">Atrašanās vieta <span aria-hidden="true">↗</span></a>
                     }
+                    @if (!isPast && ViewData["CanAddToCalendar"] is true)
+                    {
+                        <a class="event-button" asp-controller="Events" asp-action="Calendar" asp-route-slug="@Model.Slug">Pievienot kalendāram <span aria-hidden="true">↓</span></a>
+                    }
                     @if (!string.IsNullOrWhiteSpace(gallerySlug))
                     {
                         <a class="event-button" asp-controller="Gallery" asp-action="Details" asp-route-slug="@gallerySlug">Pasākuma galerija <span aria-hidden="true">→</span></a>

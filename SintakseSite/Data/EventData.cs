@@ -153,6 +153,7 @@ public static class EventData
     Summary = "Poētisks gājiens pamestas rūpnīcas tuneļos. Septiņas dzejas un mākslas stacijas sveču un kabatas lukturīšu gaismā.",
     LocationName = "Salamandras iela 1, Jugla, Rīga",
     PriceText = "7,50 €",
+    DurationMinutes = 90, // Approximate duration from the event description.
 
     Title = "Pieturzīmes tumsā",
 

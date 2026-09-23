@@ -16,6 +16,8 @@ public class EventViewModel
 
     public string? PriceText { get; set; }
 
+    public int? DurationMinutes { get; set; }
+
     // Keep older events compact even before an editor supplies a summary.
     public string PreviewText
     {
