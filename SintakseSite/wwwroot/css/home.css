@@ -58,3 +58,11 @@
  .ss-intro-footer{font-size:11px;flex-wrap:wrap}
  #pasakumi{padding-block:48px}.ss-event-layout{gap:28px}
 }
+
+/* Compact event previews; full content lives on the event page. */
+.ss-event-facts{display:flex;flex-wrap:wrap;gap:16px 32px;margin-top:22px}
+.ss-event-facts dt{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#727267;margin-bottom:5px}
+.ss-event-facts dd{margin:0;font-size:15px;line-height:1.6;color:#35352f;overflow-wrap:anywhere}
+.ss-event-summary{margin-top:22px;font-size:17px;line-height:1.8;color:#62625b}
+.ss-event-more{margin-top:24px}
+.ss-event-more .ss-button{max-width:100%;text-align:left}

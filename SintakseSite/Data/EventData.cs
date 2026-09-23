@@ -150,6 +150,10 @@ public static class EventData
 {
     Slug = "pieturzimes-tumsa-2026",
 
+    Summary = "Poētisks gājiens pamestas rūpnīcas tuneļos. Septiņas dzejas un mākslas stacijas sveču un kabatas lukturīšu gaismā.",
+    LocationName = "Salamandras iela 1, Jugla, Rīga",
+    PriceText = "7,50 €",
+
     Title = "Pieturzīmes tumsā",
 
     Date = new DateTime(2026, 10, 2),

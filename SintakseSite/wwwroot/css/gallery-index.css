@@ -1,0 +1,25 @@
+/* Gallery overview: independent of Tailwind generation. */
+.gallery-index-page{min-height:100vh;padding:32px 24px 72px;background:#fafaf8;color:#252521}
+.gallery-index-container{max-width:1152px;margin:0 auto}
+.gallery-home-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:#62625b;font-size:14px;text-decoration:none}
+.gallery-home-link:hover{color:#a3262e}
+.gallery-index-heading{margin:36px 0 44px;padding-bottom:32px;border-bottom:1px solid #dedbd4}
+.gallery-index-heading .eyebrow{color:#a3262e;font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px}
+.gallery-index-heading h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6vw,76px);font-weight:400;line-height:1.05;margin:0}
+.gallery-index-heading .intro{color:#62625b;font-size:17px;line-height:1.7;margin-top:18px;max-width:620px}
+.gallery-albums{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.gallery-album{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #e3e0d9}
+.gallery-cover-link{display:block;aspect-ratio:16/10;overflow:hidden;background:#e9e6df}
+.gallery-cover-link img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .3s ease}
+.gallery-cover-link:hover img{transform:scale(1.025)}
+.gallery-album-content{display:flex;flex-direction:column;align-items:flex-start;flex:1;padding:24px 26px 26px}
+.gallery-album-content time{font-size:11px;letter-spacing:.14em;color:#a3262e}
+.gallery-album-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,38px);font-weight:400;line-height:1.15;margin:12px 0 0;overflow-wrap:anywhere}
+.gallery-description{font-size:15px;line-height:1.75;color:#62625b;margin:14px 0 0}
+.gallery-media-count{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;color:#74746b;margin:18px 0 22px}
+.gallery-open-button{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-height:44px;margin-top:auto;border-bottom:1px solid #a3262e;color:#a3262e;font-size:14px;text-decoration:none}
+.gallery-open-button:hover{color:#72171d;border-color:#72171d}
+.gallery-index-page a:focus-visible{outline:3px solid #a3262e;outline-offset:4px}
+.gallery-empty{padding:40px 24px;background:#fff;border:1px solid #e3e0d9;text-align:center;color:#62625b}
+@media(max-width:700px){.gallery-index-page{padding:20px 18px 48px}.gallery-albums{grid-template-columns:1fr;gap:24px}.gallery-index-heading{margin:26px 0 30px;padding-bottom:26px}.gallery-album-content{padding:22px}.gallery-album-content h2{font-size:32px}}
+@media(prefers-reduced-motion:reduce){.gallery-cover-link img{transition:none}.gallery-cover-link:hover img{transform:none}}

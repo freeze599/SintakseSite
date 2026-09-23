@@ -1,0 +1,93 @@
+@model SintakseSite.Models.EventViewModel
+@{
+    var paragraphs = Model.Description.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
+    var summary = string.IsNullOrWhiteSpace(Model.PreviewText) ? Model.Title : Model.PreviewText;
+    ViewData["Title"] = Model.Title;
+    ViewData["Description"] = summary.Length > 180 ? summary.Substring(0, 177).TrimEnd() + "…" : summary;
+    ViewData["CanonicalPath"] = Url.Action("Details", "Events", new { slug = Model.Slug });
+    ViewData["SocialImage"] = Model.PosterImage;
+    ViewData["SocialImageAlt"] = Model.Title + " — pasākuma afiša";
+    var gallerySlug = ViewData["GallerySlug"] as string;
+    var isPast = Model.Date.Date < DateTime.Today;
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/event.css" asp-append-version="true" />
+}
+<section class="event-page" aria-labelledby="event-title">
+    <div class="event-shell">
+        <nav class="event-nav" aria-label="Pasākuma navigācija">
+            <a asp-controller="Home" asp-action="Index" asp-fragment="pasakumi">← Visi pasākumi</a>
+            <a asp-controller="Home" asp-action="Index">Sintakses Stupors</a>
+        </nav>
+        <header class="event-heading">
+            <p class="event-eyebrow">@(isPast ? "Pasākumu arhīvs" : "Tiekamies pasākumā")</p>
+            <h1 id="event-title">@Model.Title</h1>
+            <dl class="event-facts">
+                <div><dt>Datums</dt><dd><time datetime="@Model.Date.ToString("yyyy-MM-dd")">@Model.Date.ToString("dd.MM.yyyy")</time></dd></div>
+                @if (!string.IsNullOrWhiteSpace(Model.Time))
+                {
+                    <div><dt>Sākums</dt><dd>@Model.Time</dd></div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.LocationName))
+                {
+                    <div><dt>Vieta</dt><dd>@Model.LocationName</dd></div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.PriceText))
+                {
+                    <div><dt>Ieeja</dt><dd>@Model.PriceText</dd></div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.Organizer))
+                {
+                    <div><dt>Rīko</dt><dd>@Model.Organizer</dd></div>
+                }
+            </dl>
+        </header>
+        <div class="event-grid">
+            <aside class="event-visual" aria-label="Pasākuma afiša un saites">
+                @if (!string.IsNullOrWhiteSpace(Model.PosterImage))
+                {
+                    <a class="event-poster" href="@Model.PosterImage" target="_blank" rel="noopener noreferrer" aria-label="Atvērt pasākuma afišu pilnā izmērā jaunā cilnē">
+                        <img src="@Model.PosterImage" alt="@Model.Title afiša" fetchpriority="high" />
+                    </a>
+                    <p class="event-caption">Nospied uz afišas, lai atvērtu to pilnā izmērā.</p>
+                }
+                <div class="event-actions">
+                    @if (!string.IsNullOrWhiteSpace(Model.ExternalUrl))
+                    {
+                        <a class="event-button event-button-primary" href="@Model.ExternalUrl" target="_blank" rel="noopener noreferrer">@Model.ExternalLinkText <span aria-hidden="true">↗</span></a>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.LocationUrl))
+                    {
+                        <a class="event-button" href="@Model.LocationUrl" target="_blank" rel="noopener noreferrer">Atrašanās vieta <span aria-hidden="true">↗</span></a>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(gallerySlug))
+                    {
+                        <a class="event-button" asp-controller="Gallery" asp-action="Details" asp-route-slug="@gallerySlug">Pasākuma galerija <span aria-hidden="true">→</span></a>
+                    }
+                </div>
+            </aside>
+            <div class="event-content">
+                @if (isPast)
+                {
+                    <p class="event-notice">Šis pasākums jau ir noticis. Zemāk saglabāts tā sākotnējais pieteikums.</p>
+                }
+                <h2>Par pasākumu</h2>
+                <div class="event-description">
+                    @foreach (var paragraph in paragraphs)
+                    {
+                        <p>@paragraph.Trim()</p>
+                    }
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.Participants))
+                {
+                    <div class="event-people"><h2>Dalībnieki</h2><p>@Model.Participants</p></div>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.MusicalGuest))
+                {
+                    <div class="event-people"><h2>Muzikālais viesis</h2><p>@Model.MusicalGuest</p></div>
+                }
+            </div>
+        </div>
+        <footer class="event-footer"><a asp-controller="Home" asp-action="Index" asp-fragment="pasakumi">← Atpakaļ pie pasākumiem</a></footer>
+    </div>
+</section>
