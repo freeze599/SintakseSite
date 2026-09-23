@@ -1,0 +1,49 @@
+@model SintakseSite.Models.AuthorAudioPageViewModel
+@{
+    ViewData["Title"] = Model.Author.Name + " — audio dzeja";
+    ViewData["Description"] = "Klausies autora balsi: " + Model.Author.Name + ". Dzejas lasījums un autora apraksts — Sintakses Stupors.";
+    ViewData["CanonicalPath"] = Url.Action("Details", "Authors", new { slug = Model.Slug });
+    ViewData["SocialImage"] = "/images/Autori/" + Model.Author.Image;
+    ViewData["SocialImageAlt"] = Model.Author.Name;
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/author-audio.css" asp-append-version="true" />
+}
+<section class="audio-page">
+    <div class="audio-shell">
+        <nav class="audio-nav" aria-label="Autora lapas navigācija">
+            <a asp-controller="Home" asp-action="Index" asp-fragment="autori">← Pie autoriem</a>
+            <a asp-controller="Home" asp-action="Index">Sintakses Stupors</a>
+        </nav>
+        <div class="audio-layout">
+            <aside>
+                <img class="audio-portrait" src="/images/Autori/@Model.Author.Image" alt="@Model.Author.Name" style="object-position: @Model.Author.ObjectPosition;" />
+                <p class="audio-category">@Model.Author.Categories</p>
+            </aside>
+            <div>
+                <p class="audio-eyebrow">Dzeja autora balsī</p>
+                <h1>@Model.Author.Name</h1>
+                <article class="audio-recording" aria-labelledby="recording-title">
+                    <span class="audio-number" aria-hidden="true">01</span>
+                    <h2 id="recording-title">@Model.RecordingTitle</h2>
+                    <p>@Model.Author.Name</p>
+                    <audio controls preload="none" aria-label="@Model.RecordingTitle — @Model.Author.Name">
+                        <source src="@Model.AudioPath" type="audio/mpeg" />
+                        Tavs pārlūks neatbalsta audio atskaņošanu.
+                    </audio>
+                    <a class="audio-file-link" href="@Model.AudioPath">Atvērt audio failu</a>
+                </article>
+                @if (!string.IsNullOrWhiteSpace(Model.Author.Description))
+                {
+                    <div class="audio-bio">
+                        <h2>Par autoru</h2>
+                        @foreach (var paragraph in Model.Author.Description.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries))
+                        {
+                            <p>@paragraph.Trim()</p>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

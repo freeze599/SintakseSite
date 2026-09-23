@@ -1,0 +1,18 @@
+.audio-page{min-height:100vh;background:#fafaf8;color:#252521;padding:28px 24px 72px}
+.audio-shell{max-width:1100px;margin:auto}
+.audio-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:24px;border-bottom:1px solid #dedbd4;font-size:14px}
+.audio-nav a{color:#62625b;text-decoration:none;min-height:32px}
+.audio-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:64px;margin-top:56px}
+.audio-portrait{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.audio-category{font-size:13px;color:#74746b;margin-top:16px}
+.audio-eyebrow{color:#a3262e;text-transform:uppercase;letter-spacing:.2em;font-size:11px}
+.audio-page h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5vw,68px);line-height:1.1;font-weight:400;margin:16px 0 32px;overflow-wrap:anywhere}
+.audio-recording{border:1px solid #dedbd4;background:white;padding:26px}
+.audio-number{font-size:12px;color:#a3262e;letter-spacing:.12em}
+.audio-page h2{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.2;font-weight:400;margin:12px 0}
+.audio-recording p{font-size:14px;color:#74746b}
+.audio-recording audio{display:block;width:100%;margin-top:24px}
+.audio-file-link{display:inline-block;margin-top:18px;font-size:13px;color:#a3262e;text-decoration:underline;text-underline-offset:4px}
+.audio-bio{margin-top:40px}.audio-bio p{font-size:16px;line-height:1.85;color:#62625b;margin-top:16px}
+.audio-page a:focus-visible,.audio-page audio:focus-visible{outline:3px solid #a3262e;outline-offset:4px}
+@media(max-width:700px){.audio-page{padding:20px 18px 48px}.audio-layout{grid-template-columns:1fr;gap:28px;margin-top:32px}.audio-portrait{max-width:210px}.audio-recording{padding:20px}.audio-page h1{font-size:46px}}
