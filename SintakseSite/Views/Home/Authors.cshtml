@@ -1,0 +1,259 @@
+@model SintakseSite.Models.HomePageViewModel
+@{
+    ViewData["Title"] = "Autori";
+    ViewData["CanonicalPath"] = "/autori";
+    ViewData["Description"] = "Sintakses Stupora autori, viņu stāsti un dzejas audio ieraksti.";
+}
+<style>
+    
+    .poster-button {
+        position: relative;
+        display: block;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        overflow: hidden;
+        cursor: zoom-in;
+    }
+
+    .poster-image {
+        display: block;
+        width: 300px;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+        transition: transform 0.3s ease;
+    }
+
+    .poster-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .poster-icon {
+        display: flex;
+        width: 54px;
+        height: 54px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        color: #171717;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+
+    .poster-button:hover .poster-image {
+        transform: scale(1.03);
+    }
+
+    .poster-button:hover .poster-overlay {
+        opacity: 1;
+    }
+
+    .poster-button:hover .poster-icon {
+        transform: scale(1);
+    }
+
+    .author-frame {
+        width: 280px;
+        height: 373px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+
+    .author-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(0);
+        opacity: 1;
+        transform: scale(1);
+        transition: filter 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    /* Datorā attēli melnbalti */
+    @@media (min-width: 768px) {
+        .author-image {
+            filter: grayscale(100%);
+            opacity: 0.9;
+        }
+
+        .author-card:hover .author-image {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.02);
+        }
+    }
+</style>
+<section id="autori"
+         class="border-t border-neutral-200 bg-white px-6 py-32">
+
+    <div class="mx-auto max-w-6xl">
+
+        <div class="mb-16 text-center">
+            <h1 class="ss-page-title">Autori</h1>
+        </div>
+
+        <div class="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+            
+            @foreach (var author in Model.Authors)
+            {
+                var hasDescription = !string.IsNullOrWhiteSpace(author.Description);
+                SintakseSite.Data.AuthorAudioData.SlugsByName.TryGetValue(author.Name, out var audioSlug);
+
+                <article class="author-card text-center">
+
+                    @if (hasDescription)
+                    {
+                        <div class="author-book-card"
+                             data-author-card>
+
+                            <div class="author-book-content author-frame">
+
+                                <div class="author-book-description"
+                                     aria-hidden="true">
+
+                                    <div class="author-book-description-inner">
+
+                                        <h3 class="author-book-title">
+                                            @author.Name
+                                        </h3>
+
+                                        <div class="author-book-text">
+                                            @if (audioSlug is not null)
+                                            {
+                                                <a class="author-audio-link" data-author-audio tabindex="-1" asp-controller="Authors" asp-action="Details" asp-route-slug="@audioSlug">Klausīties autora darbus →</a>
+                                            }
+
+                                            @foreach (var paragraph in author.Description!
+                                                .Split(
+                                                    new[] { "\r\n\r\n", "\n\n" },
+                                                    StringSplitOptions.RemoveEmptyEntries))
+                                            {
+                                                <p>@paragraph.Trim()</p>
+                                            }
+                                        </div>
+
+                                        <button type="button"
+                                                class="author-book-close"
+                                                data-author-close>
+                                            ← Atpakaļ
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <button type="button"
+                                        class="author-book-cover"
+                                        data-author-open
+                                        aria-label="Atvērt aprakstu par @author.Name"
+                                        aria-expanded="false">
+
+                                    <img src="/images/Autori/@author.Image"
+                                         alt="@author.Name"
+                                         loading="lazy"
+                                         style="object-position: @author.ObjectPosition;"
+                                         class="author-image" />
+
+                                    <span class="author-book-hint">
+                                        Lasīt aprakstu
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="author-frame">
+
+                            <img src="/images/Autori/@author.Image"
+                                 alt="@author.Name"
+                                 loading="lazy"
+                                 style="object-position: @author.ObjectPosition;"
+                                 class="author-image" />
+
+                        </div>
+                    }
+
+                    <h3 class="mt-4 text-2xl text-neutral-950">
+                        @author.Name
+                    </h3>
+
+                    <p class="mt-1 text-neutral-500">
+                        @author.Categories
+                    </p>
+                    @if (!hasDescription && audioSlug is not null)
+                    {
+                        <a class="author-audio-link" asp-controller="Authors" asp-action="Details" asp-route-slug="@audioSlug">Klausīties autora darbus →</a>
+                    }
+
+
+                </article>
+            }
+            
+
+        </div>
+    </div>
+</section>
+@section Scripts
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("[data-author-card]").forEach(card => {
+                const openButton = card.querySelector("[data-author-open]");
+                const closeButton = card.querySelector("[data-author-close]");
+                const description = card.querySelector(".author-book-description");
+
+                        const openCard = () => {
+            card.classList.add("is-opening");
+
+            window.setTimeout(() => {
+                card.classList.add("is-open");
+                openButton?.setAttribute("aria-expanded", "true");
+                description?.setAttribute("aria-hidden", "false");
+                card.querySelector("[data-author-audio]")?.setAttribute("tabindex", "0");
+            }, 120);
+
+            window.setTimeout(() => {
+                card.classList.remove("is-opening");
+                closeButton?.focus();
+            }, 1020);
+        };
+                const closeCard = () => {
+                    card.classList.remove("is-open");
+                    openButton?.setAttribute("aria-expanded", "false");
+                    description?.setAttribute("aria-hidden", "true");
+                    card.querySelector("[data-author-audio]")?.setAttribute("tabindex", "-1");
+
+                    window.setTimeout(() => {
+                        openButton?.focus();
+                    }, 300);
+                };
+
+                openButton?.addEventListener("click", openCard);
+                closeButton?.addEventListener("click", closeCard);
+
+                card.addEventListener("keydown", event => {
+                    if (event.key === "Escape" && card.classList.contains("is-open")) {
+                        closeCard();
+                    }
+                });
+            });
+        });
+    </script>
+}

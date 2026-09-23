@@ -1,4 +1,4 @@
-﻿@{
+@{
     const string siteName = "Sintakses Stupors";
     const string siteOrigin = "https://sintakse.lv";
     var pageTitle = ViewData["Title"] as string;
@@ -89,13 +89,19 @@
     <link rel="stylesheet"
           href="~/css/site.css"
           asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
+    <link rel="stylesheet" href="~/css/navigation.css" asp-append-version="true" />
 </head>
 <body class="bg-neutral-100">
-    <main>
+    <a class="ss-skip" href="#main-content">Pāriet uz saturu</a>
+    <partial name="_SiteHeader" />
+    <main id="main-content" tabindex="-1">
         @RenderBody()
     </main>
 
+    <partial name="_SiteFooter" />
+    <script src="~/js/navigation.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

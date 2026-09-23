@@ -29,6 +29,25 @@ namespace SintakseSite.Controllers
             return View(viewModel);
         }
 
+        private HomePageViewModel SectionModel() => new HomePageViewModel
+        {
+            Authors = AuthorData.Authors,
+            UpcomingEvents = EventData.Events.Where(e => e.Date.Date >= DateTime.Today).OrderBy(e => e.Date).ToList(),
+            PastEvents = EventData.Events.Where(e => e.Date.Date < DateTime.Today).OrderByDescending(e => e.Date).ToList()
+        };
+
+        [HttpGet("par-mums")]
+        public IActionResult About() => View(SectionModel());
+
+        [HttpGet("autori")]
+        public IActionResult Authors() => View(SectionModel());
+
+        [HttpGet("pasakumi")]
+        public IActionResult Events() => View(SectionModel());
+
+        [HttpGet("kontakti")]
+        public IActionResult Contacts() => View(SectionModel());
+
         public IActionResult Privacy()
         {
             return View();

@@ -1,0 +1,151 @@
+@model SintakseSite.Models.HomePageViewModel
+@{
+    ViewData["Title"] = "Kontakti";
+    ViewData["CanonicalPath"] = "/kontakti";
+    ViewData["Description"] = "Sazinies ar Sintakses Stuporu vai piesaki sadarbību un dzejas lasījumus.";
+}
+<section id="kontakti"
+             class="border-t border-neutral-200 bg-stone-50 px-6 py-32">
+
+        <div class="mx-auto max-w-5xl">
+            <div class="ss-invitation" aria-labelledby="invitation-title">
+                <div>
+                    <p class="ss-eyebrow">Sadarbībai un satikšanās reizēm</p>
+                    <h1 id="invitation-title" class="hero-title">Uzaicini Sintaksi uzstāties</h1>
+                    <p class="ss-invitation-description">Rīko dzejas vakaru, festivālu vai citu kultūras pasākumu? Aicinām sazināties par Sintakses Stupora dzejas lasījumiem un kopīgām iecerēm.</p>
+                    <p class="ss-invitation-note">Pastāsti par pasākuma ideju, datumu un vietu. Kopā pārrunāsim piemērotāko formātu un dalību.</p>
+                </div>
+                <div class="ss-invitation-contact">
+                    <p class="ss-eyebrow">Sazinies ar mums</p>
+                    <p class="ss-contact-name">Sintakses Stupors</p>
+                    <a class="ss-contact-email" href="mailto:sintaksestupors@inbox.lv">sintaksestupors@inbox.lv</a>
+                    <a class="ss-button ss-button-primary" asp-controller="Contact" asp-action="Index">Pieteikt sadarbību <span aria-hidden="true">↗</span></a>
+                    <p class="ss-mail-hint">Aizpildi pieteikuma formu tepat mājaslapā vai raksti uz norādīto adresi.</p>
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                    Atrodi mūs
+                </p>
+
+                <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+                    Jaunākie dzejoļi, pasākumi un citas aktualitātes atrodamas
+                    mūsu sociālajos tīklos.
+                </p>
+            </div>
+
+        <div class="mx-auto mt-16 max-w-3xl space-y-4">
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/sintaksesstupors/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="group relative flex items-center justify-between gap-5 overflow-hidden rounded-sm border border-neutral-200 bg-white/50 px-6 py-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-red-700 hover:bg-white hover:shadow-lg sm:gap-8 sm:px-7">
+
+                <span class="absolute inset-y-0 left-0 w-1 bg-red-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+
+                <div class="flex min-w-0 items-center gap-4 text-left sm:gap-5">
+
+                    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-neutral-600 transition-all duration-300 group-hover:border-red-700 group-hover:text-red-700">
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="22"
+                             height="22"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+
+                            <rect x="3"
+                                  y="3"
+                                  width="18"
+                                  height="18"
+                                  rx="5">
+                            </rect>
+
+                            <circle cx="12"
+                                    cy="12"
+                                    r="4">
+                            </circle>
+
+                            <circle cx="17.5"
+                                    cy="6.5"
+                                    r="1">
+                            </circle>
+
+                        </svg>
+
+                    </span>
+
+                    <div class="min-w-0">
+                        <p class="text-xs uppercase tracking-[0.3em] text-neutral-400 transition-colors duration-300 group-hover:text-red-700">
+                            Instagram
+                        </p>
+
+                        <p class="mt-2 truncate text-xl font-light text-neutral-950 transition-colors duration-300 group-hover:text-red-700 md:text-2xl">
+                            @@sintaksesstupors
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="shrink-0 text-3xl text-neutral-400 transition-all duration-300 group-hover:translate-x-2 group-hover:text-red-700"
+                      aria-hidden="true">
+                    →
+                </span>
+
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/groups/937678954475837"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="group relative flex items-center justify-between gap-5 overflow-hidden rounded-sm border border-neutral-200 bg-white/50 px-6 py-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-red-700 hover:bg-white hover:shadow-lg sm:gap-8 sm:px-7">
+
+                <span class="absolute inset-y-0 left-0 w-1 bg-red-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+
+                <div class="flex min-w-0 items-center gap-4 text-left sm:gap-5">
+
+                    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-neutral-600 transition-all duration-300 group-hover:border-red-700 group-hover:text-red-700">
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="22"
+                             height="22"
+                             viewBox="0 0 24 24"
+                             fill="currentColor"
+                             aria-hidden="true">
+
+                            <path d="M13.5 22v-8h2.8l.4-3.2h-3.2V8.75c0-.93.26-1.56 1.6-1.56H16.8V4.32c-.3-.04-1.32-.13-2.5-.13-2.47 0-4.17 1.51-4.17 4.29v2.32H7.33V14h2.8v8h3.37Z" />
+
+                        </svg>
+
+                    </span>
+
+                    <div class="min-w-0">
+                        <p class="text-xs uppercase tracking-[0.3em] text-neutral-400 transition-colors duration-300 group-hover:text-red-700">
+                            Facebook
+                        </p>
+
+                        <p class="mt-2 truncate text-xl font-light text-neutral-950 transition-colors duration-300 group-hover:text-red-700 md:text-2xl">
+                            Sintakses Stupors
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <span class="shrink-0 text-3xl text-neutral-400 transition-all duration-300 group-hover:translate-x-2 group-hover:text-red-700"
+                      aria-hidden="true">
+                    →
+                </span>
+               
+            </a>
+
+        </div>
+        <partial name="_CompanyDetails" />
+    </div>
+</section>

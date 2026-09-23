@@ -1,0 +1,30 @@
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+    var active = controller switch
+    {
+        "Gallery" => "Gallery",
+        "Authors" => "Authors",
+        "Events" => "Events",
+        "Contact" => "Contacts",
+        "Home" => action,
+        _ => ""
+    };
+}
+<header class="ss-header" data-navigation-version="10">
+    <div class="ss-shell ss-header-inner">
+        <a class="ss-brand" asp-controller="Home" asp-action="Index" aria-label="Sintakses Stupors — sākums">
+            <img src="~/images/slogo3.png" alt="" width="42" height="53" />
+            <span>Sintakses<br /><strong>Stupors</strong></span>
+        </a>
+        <button class="ss-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" hidden>Izvēlne <span aria-hidden="true">☰</span></button>
+        <nav id="site-navigation" class="ss-nav" aria-label="Galvenā navigācija">
+            <a asp-controller="Home" asp-action="Index" aria-current="@(active == "Index" ? "page" : null)">Sākums</a>
+            <a asp-controller="Home" asp-action="About" aria-current="@(active == "About" ? "page" : null)">Par mums</a>
+            <a asp-controller="Home" asp-action="Authors" aria-current="@(active == "Authors" ? "page" : null)">Autori</a>
+            <a asp-controller="Home" asp-action="Events" aria-current="@(active == "Events" ? "page" : null)">Pasākumi</a>
+            <a asp-controller="Gallery" asp-action="Index" aria-current="@(active == "Gallery" ? "page" : null)">Galerija</a>
+            <a asp-controller="Home" asp-action="Contacts" aria-current="@(active == "Contacts" ? "page" : null)">Kontakti</a>
+        </nav>
+    </div>
+</header>
