@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <UserSecretsId>SintakseSite-contact-mail</UserSecretsId>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -10,4 +11,7 @@
     <Folder Include="wwwroot\images\Events\Cesis2026\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.17.0" />
+  </ItemGroup>
 </Project>

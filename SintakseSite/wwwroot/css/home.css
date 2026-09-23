@@ -69,3 +69,15 @@
 
 .author-audio-link{display:inline-block;color:#a3262e;font-size:14px;line-height:1.6;margin:12px 0;padding:5px 0;text-decoration:underline;text-underline-offset:4px}
 .author-audio-link:focus-visible{outline:3px solid #a3262e;outline-offset:4px}
+
+.ss-invitation{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:44px;margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid #dedbd4;text-align:left}
+.ss-invitation h2{font-size:clamp(36px,4.4vw,56px);font-weight:400;line-height:1.1;margin:18px 0 22px;color:#252521}
+.ss-invitation-description{font-size:17px;line-height:1.8;color:#55554d}
+.ss-invitation-note{font-size:14px;line-height:1.8;color:#74746b;margin-top:16px}
+.ss-invitation-contact{align-self:center;min-width:0;padding:28px;background:#fff;border:1px solid #e3e0d9}
+.ss-contact-name{font-size:20px;color:#252521;margin-top:14px}
+.ss-contact-email{display:block;margin:8px 0 24px;font-size:16px;color:#a3262e;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.ss-invitation-contact .ss-button{width:100%;gap:12px}
+.ss-mail-hint{font-size:12px;line-height:1.7;color:#74746b;margin-top:14px}
+.ss-invitation a:focus-visible{outline:3px solid #a3262e;outline-offset:4px}
+@media(max-width:700px){.ss-invitation{grid-template-columns:1fr;gap:28px;margin-bottom:44px}.ss-invitation-contact{padding:22px}}

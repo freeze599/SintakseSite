@@ -1,7 +1,12 @@
+using SintakseSite.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<ContactMailOptions>(builder.Configuration.GetSection("ContactMail"));
+builder.Services.AddTransient<ContactMailSender>();
+builder.Services.AddSingleton<ContactSendBudget>();
 
 var app = builder.Build();
 

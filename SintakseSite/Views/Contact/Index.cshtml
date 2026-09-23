@@ -1,0 +1,50 @@
+@model SintakseSite.Models.ContactRequest
+@{
+    ViewData["Title"] = "Pieteikt sadarbību";
+    ViewData["Description"] = "Uzaicini Sintakses Stuporu uz dzejas lasījumiem vai pastāsti par savu sadarbības ieceri.";
+    ViewData["CanonicalPath"] = "/sadarbiba";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+}
+<section class="contact-page">
+    <div class="contact-shell">
+        <a class="contact-back" asp-controller="Home" asp-action="Index" asp-fragment="kontakti">← Atpakaļ uz kontaktiem</a>
+        <p class="contact-eyebrow">Sintakses Stupors</p>
+        <h1>Pastāsti par savu ieceri</h1>
+        <p class="contact-intro">Dzejas vakars, festivāls vai kopīgs projekts — priecāsimies par tavu ziņu.</p>
+        <form asp-controller="Contact" asp-action="Index" method="post" class="contact-form">
+            <div asp-validation-summary="All" class="contact-errors" role="alert"></div>
+            <div class="contact-trap" aria-hidden="true">
+                <label asp-for="Website">Atstāj tukšu</label>
+                <input asp-for="Website" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="contact-row">
+                <div><label asp-for="Name"></label><input asp-for="Name" autocomplete="name" maxlength="100" required /></div>
+                <div><label asp-for="Email"></label><input asp-for="Email" type="email" autocomplete="email" maxlength="254" required /></div>
+            </div>
+            <div class="contact-row">
+                <div><label asp-for="EventDate"></label><input asp-for="EventDate" type="date" /></div>
+                <div><label asp-for="Location"></label><input asp-for="Location" maxlength="200" /></div>
+            </div>
+            <label asp-for="Message"></label>
+            <textarea asp-for="Message" rows="7" minlength="10" maxlength="5000" required placeholder="Pasākuma ideja, auditorija, vēlamais uzstāšanās ilgums…"></textarea>
+            <p class="contact-note">Tavu vārdu, e-pastu un ziņu izmantosim saziņai par šo pieteikumu.</p>
+            <button type="submit">Nosūtīt pieteikumu <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="contact-direct">Vari arī rakstīt: <a href="mailto:sintaksestupors@inbox.lv">sintaksestupors@inbox.lv</a></p>
+    </div>
+</section>
+@section Scripts {
+    <script>
+        document.querySelector('.contact-form')?.addEventListener('submit', function () {
+            const button = this.querySelector('button[type="submit"]');
+            button.disabled = true;
+            button.textContent = 'Nosūta…';
+        });
+        window.addEventListener('pageshow', () => {
+            const button = document.querySelector('.contact-form button[type="submit"]');
+            if (button) { button.disabled = false; button.textContent = 'Nosūtīt pieteikumu →'; }
+        });
+    </script>
+}
