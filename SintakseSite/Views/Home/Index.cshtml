@@ -2,8 +2,13 @@
 
 @{
     ViewData["Title"] = "Sākums";
+    var featuredEvent = Model.UpcomingEvents.OrderBy(e => e.Date).FirstOrDefault();
 }
 
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+}
 
 <style>
     
@@ -99,35 +104,211 @@
     }
 </style>
 
-<section class="min-h-screen bg-stone-50 px-6">
-    <div class="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center text-center">
-
-        <img src="/images/slogo3.png"
-             alt="Sintakses Stupors"
-             class="mx-auto h-40 w-auto" />
-
-        <div class="my-10 h-px w-40 bg-neutral-300"></div>
-
-        <h1 class="hero-title mt-4 text-5xl font-light tracking-tight text-neutral-950 md:text-6xl">
-            Sintakses Stupors
-        </h1>
-
-        <p class="mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
-            Vieta literatūrai, autoriem un notikumiem.
-        </p>
-
-        <nav class="mt-16 flex flex-wrap justify-center gap-8 text-lg">
-            <a href="#par-mums" class="transition hover:text-red-700 focus:outline-none">Par mums</a>
-            <a href="#autori" class="transition hover:text-red-700 focus:outline-none">Autori</a>
-
-            <a href="#pasakumi" class="transition hover:text-red-700 focus:outline-none">Pasākumi</a>
-            <a asp-controller="Gallery"
-               asp-action="Index">
-                Galerija
-            </a>
-            <a href="#kontakti" class="transition hover:text-red-700 focus:outline-none">Kontakti</a>
-           
+<header class="ss-header">
+    <div class="ss-shell ss-header-inner">
+        <a class="ss-brand" href="#sakums" aria-label="Sintakses Stupors — sākums">
+            <img src="/images/slogo3.png" alt="" width="395" height="497" />
+            <span>Sintakses<br /><strong>Stupors</strong></span>
+        </a>
+        <nav class="ss-nav" aria-label="Galvenā navigācija">
+            <a href="#pasakumi">Pasākumi</a>
+            <a href="#autori">Autori</a>
+            <a asp-controller="Gallery" asp-action="Index">Galerija</a>
+            <a href="#par-mums">Par mums</a>
+            <a href="#kontakti">Kontakti</a>
         </nav>
+    </div>
+</header>
+
+<section id="sakums" class="ss-intro" aria-labelledby="ss-title">
+    <div class="ss-shell ss-intro-grid">
+        <div class="ss-intro-copy">
+            <p class="ss-eyebrow">Dzeja · cilvēki · satikšanās</p>
+            <h1 id="ss-title" class="hero-title">Sintakses<br /><span>Stupors</span></h1>
+            <p class="ss-lead">Vieta literatūrai, autoriem un notikumiem.</p>
+            <p class="ss-intro-note">Rīkojam dzejas lasījumus, dalāmies tekstos un plānojam būt mūžīgi.</p>
+            <div class="ss-actions">
+                <a class="ss-button ss-button-primary" href="#pasakumi">
+                    @(featuredEvent is null ? "Skatīt pasākumus" : "Tuvākais pasākums") <span aria-hidden="true">↓</span>
+                </a>
+                <a class="ss-text-link" href="#autori">Iepazīsti autorus <span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+        @if (featuredEvent is not null)
+        {
+            <article class="ss-feature" aria-labelledby="ss-feature-title">
+                <div class="ss-feature-topline"><span>Tiekamies drīzumā</span><span aria-hidden="true">↗</span></div>
+                @if (!string.IsNullOrWhiteSpace(featuredEvent.PosterImage))
+                {
+                    <a class="ss-feature-image" href="#pasakumi" aria-label="Skatīt pasākumu: @featuredEvent.Title">
+                        <img src="@featuredEvent.PosterImage" alt="@featuredEvent.Title afiša" fetchpriority="high" />
+                    </a>
+                }
+                <div class="ss-feature-body">
+                    <p class="ss-event-date">
+                        <time datetime="@featuredEvent.Date.ToString("yyyy-MM-dd")">@featuredEvent.Date.ToString("dd.MM.yyyy")</time>
+                        @if (!string.IsNullOrWhiteSpace(featuredEvent.Time))
+                        {
+                            <span> · @featuredEvent.Time</span>
+                        }
+                    </p>
+                    <h2 id="ss-feature-title" class="hero-title">@featuredEvent.Title</h2>
+                    <a class="ss-text-link" href="#pasakumi">Par pasākumu <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+        }
+        else
+        {
+            <div class="ss-feature ss-feature-empty">
+                <p class="ss-eyebrow">Starp satikšanās reizēm</p>
+                <h2 class="hero-title">Dzeja paliek.</h2>
+                <p>Nākamos pasākumus vēl gatavojam. Tikmēr ieskaties mūsu kopīgajos brīžos.</p>
+                <a class="ss-button ss-button-primary" asp-controller="Gallery" asp-action="Index">Skatīt galeriju <span aria-hidden="true">→</span></a>
+            </div>
+        }
+    </div>
+    <div class="ss-shell ss-intro-footer"><span>Literatūrā kopā kopš 2024.</span><a href="#par-mums">Mūsu stāsts <span aria-hidden="true">↓</span></a></div>
+</section>
+
+<section id="pasakumi"
+         class="border-t border-neutral-200 bg-white px-6 py-32">
+
+    <div class="mx-auto max-w-6xl">
+
+        <div class="mb-20 text-center">
+            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                Pasākumi
+            </p>
+
+            <h2 class="mt-6 text-5xl font-light tracking-tight text-neutral-950 md:text-7xl">
+                Tuvākie notikumi
+            </h2>
+        </div>
+
+        @if (Model.UpcomingEvents.Any())
+        {
+            <div class="space-y-32 lg:space-y-20">
+                @foreach (var eventItem in Model.UpcomingEvents)
+                {
+                    <article class="ss-event-layout">
+
+                        <div class="flex justify-center">
+                            <button type="button"
+                                    onclick="openPoster('@eventItem.PosterImage')"
+                                    aria-label="Palielināt @eventItem.Title afišu"
+                                    class="poster-button">
+
+                                <img src="@eventItem.PosterImage"
+                                     alt="@eventItem.Title afiša"
+                                     class="poster-image" />
+
+                                <span class="poster-overlay">
+                                    <span class="poster-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="2"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round"
+                                             aria-hidden="true">
+
+                                            <circle cx="11" cy="11" r="7"></circle>
+                                            <line x1="20"
+                                                  y1="20"
+                                                  x2="16.5"
+                                                  y2="16.5">
+                                            </line>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
+                                @eventItem.Date.ToString("dd.MM.yyyy")
+                                ·
+                                @eventItem.Time
+                            </p>
+
+                            <h3 class="mt-5 text-4xl font-light leading-tight text-neutral-950 md:text-5xl">
+                                @eventItem.Title
+                            </h3>
+
+                            <div class="ss-event-description mt-6 text-lg leading-8 text-neutral-600">
+                                @foreach (var paragraph in eventItem.Description.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <p>@paragraph.Trim()</p>
+                                }
+                            </div>
+
+                            @if (!string.IsNullOrWhiteSpace(eventItem.Participants))
+                            {
+                                <div class="mt-8">
+                                    <p class="text-sm uppercase tracking-[0.25em] text-red-700">
+                                        Dzeju lasīs
+                                    </p>
+
+                                    <p class="mt-4 leading-8 text-neutral-600">
+                                        @eventItem.Participants
+                                    </p>
+                                </div>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(eventItem.MusicalGuest))
+                            {
+                                <div class="mt-8">
+                                    <p class="text-sm uppercase tracking-[0.25em] text-red-700">
+                                        Muzikālais viesis
+                                    </p>
+
+                                    <p class="mt-4 text-lg text-neutral-700">
+                                        @eventItem.MusicalGuest
+                                    </p>
+                                </div>
+                            }
+
+                            <div class="mt-10 flex flex-wrap gap-4">
+
+                                @if (!string.IsNullOrWhiteSpace(eventItem.LocationUrl))
+                                {
+                                    <a href="@eventItem.LocationUrl"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                                        Atrašanās vieta
+                                        <span aria-hidden="true">↗</span>
+                                    </a>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(eventItem.ExternalUrl))
+                                {
+                                    <a href="@eventItem.ExternalUrl"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
+
+                                        @eventItem.ExternalLinkText
+                                        <span aria-hidden="true">→</span>
+                                    </a>
+                                }
+                                </div>
+                                </div>
+
+                    </article>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-center text-lg text-neutral-500">
+                Pašlaik jauni pasākumi nav izziņoti.
+            </p>
+        }
 
     </div>
 </section>
@@ -300,146 +481,11 @@
     </div>
 
 </section>
-<section id="pasakumi"
-         class="border-t border-neutral-200 bg-white px-6 py-32">
-
+<section id="arhivs" class="ss-archive-section">
     <div class="mx-auto max-w-6xl">
-
-        <div class="mb-20 text-center">
-            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
-                Pasākumi
-            </p>
-
-            <h2 class="mt-6 text-5xl font-light tracking-tight text-neutral-950 md:text-7xl">
-                Tuvākie notikumi
-            </h2>
-        </div>
-
-        @if (Model.UpcomingEvents.Any())
-        {
-            <div class="space-y-32 lg:space-y-20">
-                @foreach (var eventItem in Model.UpcomingEvents)
-                {
-                    <article class="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
-
-                        <div class="flex justify-center">
-                            <button type="button"
-                                    onclick="openPoster('@eventItem.PosterImage')"
-                                    aria-label="Palielināt @eventItem.Title afišu"
-                                    class="poster-button">
-
-                                <img src="@eventItem.PosterImage"
-                                     alt="@eventItem.Title afiša"
-                                     class="poster-image" />
-
-                                <span class="poster-overlay">
-                                    <span class="poster-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             width="24"
-                                             height="24"
-                                             viewBox="0 0 24 24"
-                                             fill="none"
-                                             stroke="currentColor"
-                                             stroke-width="2"
-                                             stroke-linecap="round"
-                                             stroke-linejoin="round"
-                                             aria-hidden="true">
-
-                                            <circle cx="11" cy="11" r="7"></circle>
-                                            <line x1="20"
-                                                  y1="20"
-                                                  x2="16.5"
-                                                  y2="16.5">
-                                            </line>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </button>
-                        </div>
-
-                        <div>
-                            <p class="text-sm uppercase tracking-[0.35em] text-red-700">
-                                @eventItem.Date.ToString("dd.MM.yyyy")
-                                ·
-                                @eventItem.Time
-                            </p>
-
-                            <h3 class="mt-5 text-4xl font-light leading-tight text-neutral-950 md:text-5xl">
-                                @eventItem.Title
-                            </h3>
-
-                            <p class="mt-6 text-lg leading-8 text-neutral-600">
-                                @eventItem.Description
-                            </p>
-
-                            @if (!string.IsNullOrWhiteSpace(eventItem.Participants))
-                            {
-                                <div class="mt-8">
-                                    <p class="text-sm uppercase tracking-[0.25em] text-red-700">
-                                        Dzeju lasīs
-                                    </p>
-
-                                    <p class="mt-4 leading-8 text-neutral-600">
-                                        @eventItem.Participants
-                                    </p>
-                                </div>
-                            }
-
-                            @if (!string.IsNullOrWhiteSpace(eventItem.MusicalGuest))
-                            {
-                                <div class="mt-8">
-                                    <p class="text-sm uppercase tracking-[0.25em] text-red-700">
-                                        Muzikālais viesis
-                                    </p>
-
-                                    <p class="mt-4 text-lg text-neutral-700">
-                                        @eventItem.MusicalGuest
-                                    </p>
-                                </div>
-                            }
-
-                            <div class="mt-10 flex flex-wrap gap-4">
-
-                                @if (!string.IsNullOrWhiteSpace(eventItem.LocationUrl))
-                                {
-                                    <a href="@eventItem.LocationUrl"
-                                       target="_blank"
-                                       rel="noopener noreferrer"
-                                       class="inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
-
-                                        Atrašanās vieta
-                                        <span aria-hidden="true">↗</span>
-                                    </a>
-                                }
-
-                                @if (!string.IsNullOrWhiteSpace(eventItem.ExternalUrl))
-                                {
-                                    <a href="@eventItem.ExternalUrl"
-                                       target="_blank"
-                                       rel="noopener noreferrer"
-                                       class="inline-flex items-center gap-3 border border-neutral-300 px-6 py-3 text-sm uppercase tracking-[0.25em] text-neutral-700 transition-all duration-300 hover:border-red-700 hover:bg-red-700 hover:text-white">
-
-                                        @eventItem.ExternalLinkText
-                                        <span aria-hidden="true">→</span>
-                                    </a>
-                                }
-                                </div>
-                                </div>
-
-                    </article>
-                }
-            </div>
-        }
-        else
-        {
-            <p class="text-center text-lg text-neutral-500">
-                Pašlaik jauni pasākumi nav izziņoti.
-            </p>
-        }
-
         @if (Model.PastEvents.Any())
         {
-            <div class="mt-40 border-y border-neutral-200 bg-neutral-100 px-6 py-20 sm:mt-48 sm:py-24 lg:mt-64 lg:px-12 lg:py-28">
+            <div class="border-y border-neutral-200 bg-neutral-100 px-6 py-20">
 
                 <div class="mb-16 text-center">
                     <p class="text-sm uppercase tracking-[0.35em] text-red-700">
