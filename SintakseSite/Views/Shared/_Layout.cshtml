@@ -116,12 +116,19 @@
 <body class="bg-neutral-100">
     <a class="ss-skip" href="#main-content">Pāriet uz saturu</a>
     <partial name="_SiteHeader" />
+    @if (inlineHomeStyles)
+    {
+        <partial name="_HomeNavigation" />
+    }
     <main id="main-content" tabindex="-1">
         @RenderBody()
     </main>
 
     <partial name="_SiteFooter" />
-    <script src="~/js/navigation.js" asp-append-version="true"></script>
+    @if (!inlineHomeStyles)
+    {
+        <script src="~/js/navigation.js" asp-append-version="true"></script>
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

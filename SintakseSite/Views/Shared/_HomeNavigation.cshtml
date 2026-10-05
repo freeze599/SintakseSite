@@ -1,0 +1,20 @@
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
+@{
+    // Run the existing navigation immediately after the header, before main is parsed.
+    var scriptFile = HostingEnvironment.WebRootFileProvider.GetFileInfo("js/navigation.js");
+    var scriptText = string.Empty;
+    if (scriptFile.Exists)
+    {
+        using var stream = scriptFile.CreateReadStream();
+        using var reader = new System.IO.StreamReader(stream);
+        scriptText = await reader.ReadToEndAsync();
+    }
+}
+@if (scriptFile.Exists && scriptText.IndexOf("</script", System.StringComparison.OrdinalIgnoreCase) < 0)
+{
+    <script>@Html.Raw(scriptText)</script>
+}
+else
+{
+    <script src="~/js/navigation.js" asp-append-version="true"></script>
+}
