@@ -1,0 +1,25 @@
+@model string
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
+@{
+    // Fixed local assets only; never read a filename supplied by a request.
+    if (Model != "site.css" && Model != "home.css" && Model != "navigation.css")
+    {
+        throw new System.InvalidOperationException("Unsupported inline stylesheet.");
+    }
+    var cssFile = HostingEnvironment.WebRootFileProvider.GetFileInfo("css/" + Model);
+    var cssText = string.Empty;
+    if (cssFile.Exists)
+    {
+        using var stream = cssFile.CreateReadStream();
+        using var reader = new System.IO.StreamReader(stream);
+        cssText = await reader.ReadToEndAsync();
+    }
+}
+@if (cssFile.Exists && cssText.IndexOf("</style", System.StringComparison.OrdinalIgnoreCase) < 0)
+{
+    <style data-inline-stylesheet="@Model">@Html.Raw(cssText)</style>
+}
+else
+{
+    <link rel="stylesheet" href="@Url.Content("~/css/" + Model)" asp-append-version="true" />
+}

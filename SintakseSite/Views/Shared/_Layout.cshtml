@@ -1,4 +1,6 @@
 @{
+    var inlineHomeStyles = string.Equals(ViewContext.RouteData.Values["controller"]?.ToString(), "Home", System.StringComparison.OrdinalIgnoreCase)
+        && string.Equals(ViewContext.RouteData.Values["action"]?.ToString(), "Index", System.StringComparison.OrdinalIgnoreCase);
     const string siteName = "Sintakses Stupors";
     const string siteOrigin = "https://sintakse.lv";
     var pageTitle = ViewData["Title"] as string;
@@ -91,12 +93,25 @@
           href="~/favicon.png" />
 
     <!-- CSS -->
-    <link rel="stylesheet"
-          href="~/css/site.css"
-          asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    @if (inlineHomeStyles)
+    {
+        @await Html.PartialAsync("_InlineHomeStyles", "site.css")
+        @await Html.PartialAsync("_InlineHomeStyles", "home.css")
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    }
     @await RenderSectionAsync("Styles", required: false)
-    <link rel="stylesheet" href="~/css/navigation.css" asp-append-version="true" />
+    @if (inlineHomeStyles)
+    {
+        @await Html.PartialAsync("_InlineHomeStyles", "navigation.css")
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/css/navigation.css" asp-append-version="true" />
+    }
 </head>
 <body class="bg-neutral-100">
     <a class="ss-skip" href="#main-content">Pāriet uz saturu</a>
