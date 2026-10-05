@@ -5,7 +5,10 @@
     ViewData["Description"] = string.IsNullOrWhiteSpace(Model.Description)
         ? Model.Title + " — Sintakses Stupora pasākuma fotogalerija."
         : Model.Description;
-    ViewData["CanonicalPath"] = Url.Action("Details", "Gallery", new { slug = Model.Slug });
+
+    ViewData["CanonicalPath"] =
+        Url.Action("Details", "Gallery", new { slug = Model.Slug });
+
     ViewData["SocialImage"] = Model.CoverImage;
     ViewData["SocialImageAlt"] = Model.Title + " — fotogalerija";
 }
@@ -13,14 +16,19 @@
 <style>
     .gallery-video {
         overflow: hidden;
+        cursor: default;
     }
 
-        .gallery-video video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
+    .gallery-video video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    cursor: default;
+    }
 
     .gallery-page {
         min-height: 100vh;
@@ -40,15 +48,15 @@
         margin-bottom: 45px;
     }
 
-        .gallery-navigation a {
-            color: #57534e;
-            text-decoration: none;
-            font-size: 15px;
-        }
+    .gallery-navigation a {
+        color: #57534e;
+        text-decoration: none;
+        font-size: 15px;
+    }
 
-            .gallery-navigation a:hover {
-                color: #171717;
-            }
+    .gallery-navigation a:hover {
+        color: #171717;
+    }
 
     .gallery-heading {
         max-width: 700px;
@@ -56,25 +64,25 @@
         text-align: center;
     }
 
-        .gallery-heading time {
-            color: #737373;
-            font-size: 14px;
-        }
+    .gallery-heading time {
+        color: #737373;
+        font-size: 14px;
+    }
 
-        .gallery-heading h1 {
-            margin: 12px 0 15px;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(42px, 6vw, 70px);
-            font-weight: 400;
-            line-height: 1;
-        }
+    .gallery-heading h1 {
+        margin: 12px 0 15px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(42px, 6vw, 70px);
+        font-weight: 400;
+        line-height: 1;
+    }
 
-        .gallery-heading p {
-            margin: 0;
-            color: #57534e;
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    .gallery-heading p {
+        margin: 0;
+        color: #57534e;
+        font-size: 18px;
+        line-height: 1.6;
+    }
 
     .gallery-grid {
         display: grid;
@@ -93,17 +101,18 @@
         cursor: zoom-in;
     }
 
-        .gallery-thumbnail img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.35s ease;
-        }
-        .gallery-thumbnail:hover img {
-            transform: scale(1.035);
-        }
+    .gallery-thumbnail img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.35s ease;
+    }
+
+    .gallery-thumbnail:hover img {
+        transform: scale(1.035);
+    }
 
     .lightbox {
         position: fixed;
@@ -116,9 +125,9 @@
         background: rgba(0, 0, 0, 0.94);
     }
 
-        .lightbox.is-open {
-            display: flex;
-        }
+    .lightbox.is-open {
+        display: flex;
+    }
 
     .lightbox-image {
         display: block;
@@ -224,7 +233,9 @@
 
             <p>@Model.Description</p>
         </div>
+
         <div class="gallery-grid">
+
             @for (var i = 0; i < Model.Images.Count; i++)
             {
                 <button type="button"
@@ -240,22 +251,27 @@
 
             @for (var i = 0; i < Model.Videos.Count; i++)
             {
-                <button type="button"
-                        class="gallery-thumbnail gallery-video"
-                        data-video-index="@i"
-                        aria-label="Atvērt video @(i + 1)">
+                <div class="gallery-thumbnail gallery-video">
 
-                    <video preload="metadata"
-                           muted
+                    <video controls
+                           preload="metadata"
                            playsinline>
-                        <source src="@Model.Videos[i]" type="video/mp4" />
+
+                        <source src="@Model.Videos[i]"
+                                type="video/mp4" />
+
                         Tavs pārlūks neatbalsta video.
                     </video>
-                </button>
+
+                </div>
             }
+
         </div>
     </div>
 </section>
+
+
+<!-- BILŽU LIGHTBOX -->
 
 <div id="galleryLightbox"
      class="lightbox"
@@ -282,13 +298,6 @@
          src=""
          alt="" />
 
-    <video id="lightboxVideo"
-           class="lightbox-video"
-           controls
-           playsinline
-           style="display:none;">
-    </video>
-
     <button id="lightboxNext"
             type="button"
             class="lightbox-arrow lightbox-next"
@@ -299,63 +308,9 @@
     <div id="lightboxCounter"
          class="lightbox-counter">
     </div>
+
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const images = @Html.Raw(
-                        System.Text.Json.JsonSerializer.Serialize(Model.Images)
-                );
-
-        const lightbox = document.getElementById("galleryLightbox");
-        const lightboxImage = document.getElementById("lightboxImage");
-        const lightboxCounter = document.getElementById("lightboxCounter");
-        const closeButton = document.getElementById("lightboxClose");
-        const previousButton = document.getElementById("lightboxPrevious");
-        const nextButton = document.getElementById("lightboxNext");
-        const thumbnails = document.querySelectorAll(".gallery-thumbnail");
-
-        let currentIndex = 0;
-
-        function showImage(index) {
-            if (!images.length) {
-                return;
-            }
-
-            currentIndex = (index + images.length) % images.length;
-            lightboxImage.src = images[currentIndex];
-            lightboxImage.alt =
-                `@Model.Title — attēls ${currentIndex + 1}`;
-
-            lightboxCounter.textContent =
-                `${currentIndex + 1} / ${images.length}`;
-        }
-
-        function openLightbox(index) {
-            showImage(index);
-            lightbox.classList.add("is-open");
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove("is-open");
-            lightboxImage.src = "";
-            document.body.style.overflow = "";
-        }
-
-        thumbnails.forEach(function (thumbnail) {
-            thumbnail.addEventListener("click", function () {
-                openLightbox(
-                    Number(thumbnail.dataset.imageIndex)
-                );
-            });
-        });
-
-        closeButton.addEventListener("click", closeLightbox);
-
-        previousButton.addEventListener("click", function () {
-            showImage(currentIndex - 1);
-        });
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -364,87 +319,64 @@
             System.Text.Json.JsonSerializer.Serialize(Model.Images)
         );
 
-        const videos = @Html.Raw(
-            System.Text.Json.JsonSerializer.Serialize(Model.Videos)
-        );
+        const lightbox =
+            document.getElementById("galleryLightbox");
 
-        const media = [
-            ...images.map(src => ({
-                type: "image",
-                src: src
-            })),
-            ...videos.map(src => ({
-                type: "video",
-                src: src
-            }))
-        ];
+        const lightboxImage =
+            document.getElementById("lightboxImage");
 
-        const lightbox = document.getElementById("galleryLightbox");
-        const lightboxImage = document.getElementById("lightboxImage");
-        const lightboxVideo = document.getElementById("lightboxVideo");
-        const lightboxCounter = document.getElementById("lightboxCounter");
+        const lightboxCounter =
+            document.getElementById("lightboxCounter");
 
-        const closeButton = document.getElementById("lightboxClose");
-        const previousButton = document.getElementById("lightboxPrevious");
-        const nextButton = document.getElementById("lightboxNext");
+        const closeButton =
+            document.getElementById("lightboxClose");
 
-        const imageThumbnails =
-            document.querySelectorAll("[data-image-index]");
+        const previousButton =
+            document.getElementById("lightboxPrevious");
 
-        const videoThumbnails =
-            document.querySelectorAll("[data-video-index]");
+        const nextButton =
+            document.getElementById("lightboxNext");
+
+        // SVARĪGI:
+        // izvēlamies tikai BILDES, nevis video
+        const thumbnails =
+            document.querySelectorAll(
+                ".gallery-thumbnail[data-image-index]"
+            );
 
         let currentIndex = 0;
 
-        function stopVideo() {
-            lightboxVideo.pause();
-            lightboxVideo.removeAttribute("src");
-            lightboxVideo.load();
-            lightboxVideo.style.display = "none";
-        }
 
-        function showMedia(index) {
+        function showImage(index) {
 
-            if (!media.length) {
+            if (!images.length) {
                 return;
             }
 
             currentIndex =
-                (index + media.length) % media.length;
+                (index + images.length) % images.length;
 
-            const item = media[currentIndex];
+            lightboxImage.src =
+                images[currentIndex];
 
-            // Vispirms paslēpjam abus
-            lightboxImage.style.display = "none";
-            stopVideo();
-
-            if (item.type === "image") {
-
-                lightboxImage.src = item.src;
-                lightboxImage.alt =
-                    `@Model.Title — attēls ${currentIndex + 1}`;
-
-                lightboxImage.style.display = "block";
-
-            } else {
-
-                lightboxImage.src = "";
-
-                lightboxVideo.src = item.src;
-                lightboxVideo.style.display = "block";
-                lightboxVideo.load();
-            }
+            lightboxImage.alt =
+                `@Model.Title — attēls ${currentIndex + 1}`;
 
             lightboxCounter.textContent =
-                `${currentIndex + 1} / ${media.length}`;
+                `${currentIndex + 1} / ${images.length}`;
         }
+
 
         function openLightbox(index) {
-            showMedia(index);
+
+            showImage(index);
 
             lightbox.classList.add("is-open");
-            document.body.style.overflow = "hidden";
+
+            document.body.style.overflow =
+                "hidden";
         }
+
 
         function closeLightbox() {
 
@@ -452,44 +384,25 @@
 
             lightboxImage.src = "";
 
-            stopVideo();
-
             document.body.style.overflow = "";
         }
 
 
-        // BILDES
+        thumbnails.forEach(function (thumbnail) {
 
-        imageThumbnails.forEach(function (thumbnail) {
+            thumbnail.addEventListener(
+                "click",
+                function () {
 
-            thumbnail.addEventListener("click", function () {
-
-                const index =
-                    Number(thumbnail.dataset.imageIndex);
-
-                openLightbox(index);
-            });
+                    openLightbox(
+                        Number(
+                            thumbnail.dataset.imageIndex
+                        )
+                    );
+                }
+            );
         });
 
-
-        // VIDEO
-
-        videoThumbnails.forEach(function (thumbnail) {
-
-            thumbnail.addEventListener("click", function () {
-
-                const videoIndex =
-                    Number(thumbnail.dataset.videoIndex);
-
-                const index =
-                    images.length + videoIndex;
-
-                openLightbox(index);
-            });
-        });
-
-
-        // AIZVĒRT
 
         closeButton.addEventListener(
             "click",
@@ -497,27 +410,21 @@
         );
 
 
-        // IEPRIEKŠĒJAIS
-
         previousButton.addEventListener(
             "click",
             function () {
-                showMedia(currentIndex - 1);
+                showImage(currentIndex - 1);
             }
         );
 
-
-        // NĀKAMAIS
 
         nextButton.addEventListener(
             "click",
             function () {
-                showMedia(currentIndex + 1);
+                showImage(currentIndex + 1);
             }
         );
 
-
-        // Klikšķis uz melnā fona
 
         lightbox.addEventListener(
             "click",
@@ -529,8 +436,6 @@
             }
         );
 
-
-        // KLAVIATŪRA
 
         document.addEventListener(
             "keydown",
@@ -547,11 +452,11 @@
                 }
 
                 if (event.key === "ArrowLeft") {
-                    showMedia(currentIndex - 1);
+                    showImage(currentIndex - 1);
                 }
 
                 if (event.key === "ArrowRight") {
-                    showMedia(currentIndex + 1);
+                    showImage(currentIndex + 1);
                 }
             }
         );
