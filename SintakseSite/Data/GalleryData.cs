@@ -198,7 +198,7 @@ public static class GalleryData
     Title = "Tumšās pieturzīmes",
 
     Description =
-        "Dzejas grupa \"Sintakses Stupors\" un Veronika Usas maldās tuneļos un pat atrod izeju.",
+        "Dzejas grupa \"Sintakses Stupors\" un Veronika Usas maldās tuneļos.",
 
     Date = new DateTime(2026, 10, 2),
 
