@@ -188,7 +188,70 @@ public static class GalleryData
 "/images/Gallery/DzejasNaktsPargajiens2026/dzg13.jpg",
 "/images/Gallery/DzejasNaktsPargajiens2026/dzg14.jpg",
 
-
-    },
-}};
     }
+    },
+
+        new GalleryViewModel
+{
+    Slug = "dzejas-npieturzimes-tumsa-2026",
+
+    Title = "Tumšās pieturzīmes",
+
+    Description =
+        "Dzejas grupa \"Sintakses Stupors\" un Veronika Usas maldās tuneļos un pat atrod izeju.",
+
+    Date = new DateTime(2026, 10, 2),
+
+    CoverImage =
+        "/images/Events/Tuneli2026/tuneli.jpg" +
+            "",
+
+    Images = new()
+    {
+        "/images/Gallery/Tuneli2026/tuneli1.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli2.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli3.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli4.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli5.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli6.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli7.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli8.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli9.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli10.jpeg",
+         "/images/Gallery/Tuneli2026/tuneli11.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli12.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli13.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli14.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli15.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli16.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli17.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli18.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli19.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli20.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli21.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli22.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli23.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli24.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli25.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli26.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli27.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli28.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli29.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli30.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli31.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli32.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli33.jpeg",
+        "/images/Gallery/Tuneli2026/tuneli34.jpeg",
+        
+
+      },
+              Videos = new()
+    {
+        "/images/Gallery/Tuneli2026/tuneliVideo.mp4",
+
+    }
+
+    }
+    
+    };
+}

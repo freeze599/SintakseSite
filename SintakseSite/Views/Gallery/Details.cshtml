@@ -240,12 +240,18 @@
 
             @for (var i = 0; i < Model.Videos.Count; i++)
             {
-                <div class="gallery-thumbnail gallery-video">
-                    <video controls preload="metadata">
+                <button type="button"
+                        class="gallery-thumbnail gallery-video"
+                        data-video-index="@i"
+                        aria-label="Atvērt video @(i + 1)">
+
+                    <video preload="metadata"
+                           muted
+                           playsinline>
                         <source src="@Model.Videos[i]" type="video/mp4" />
                         Tavs pārlūks neatbalsta video.
                     </video>
-                </div>
+                </button>
             }
         </div>
     </div>
@@ -275,6 +281,13 @@
          class="lightbox-image"
          src=""
          alt="" />
+
+    <video id="lightboxVideo"
+           class="lightbox-video"
+           controls
+           playsinline
+           style="display:none;">
+    </video>
 
     <button id="lightboxNext"
             type="button"
@@ -344,32 +357,204 @@
             showImage(currentIndex - 1);
         });
 
-        nextButton.addEventListener("click", function () {
-            showImage(currentIndex + 1);
-        });
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-        lightbox.addEventListener("click", function (event) {
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
-        });
+        const images = @Html.Raw(
+            System.Text.Json.JsonSerializer.Serialize(Model.Images)
+        );
 
-        document.addEventListener("keydown", function (event) {
-            if (!lightbox.classList.contains("is-open")) {
+        const videos = @Html.Raw(
+            System.Text.Json.JsonSerializer.Serialize(Model.Videos)
+        );
+
+        const media = [
+            ...images.map(src => ({
+                type: "image",
+                src: src
+            })),
+            ...videos.map(src => ({
+                type: "video",
+                src: src
+            }))
+        ];
+
+        const lightbox = document.getElementById("galleryLightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxVideo = document.getElementById("lightboxVideo");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+
+        const closeButton = document.getElementById("lightboxClose");
+        const previousButton = document.getElementById("lightboxPrevious");
+        const nextButton = document.getElementById("lightboxNext");
+
+        const imageThumbnails =
+            document.querySelectorAll("[data-image-index]");
+
+        const videoThumbnails =
+            document.querySelectorAll("[data-video-index]");
+
+        let currentIndex = 0;
+
+        function stopVideo() {
+            lightboxVideo.pause();
+            lightboxVideo.removeAttribute("src");
+            lightboxVideo.load();
+            lightboxVideo.style.display = "none";
+        }
+
+        function showMedia(index) {
+
+            if (!media.length) {
                 return;
             }
 
-            if (event.key === "Escape") {
-                closeLightbox();
+            currentIndex =
+                (index + media.length) % media.length;
+
+            const item = media[currentIndex];
+
+            // Vispirms paslēpjam abus
+            lightboxImage.style.display = "none";
+            stopVideo();
+
+            if (item.type === "image") {
+
+                lightboxImage.src = item.src;
+                lightboxImage.alt =
+                    `@Model.Title — attēls ${currentIndex + 1}`;
+
+                lightboxImage.style.display = "block";
+
+            } else {
+
+                lightboxImage.src = "";
+
+                lightboxVideo.src = item.src;
+                lightboxVideo.style.display = "block";
+                lightboxVideo.load();
             }
 
-            if (event.key === "ArrowLeft") {
-                showImage(currentIndex - 1);
-            }
+            lightboxCounter.textContent =
+                `${currentIndex + 1} / ${media.length}`;
+        }
 
-            if (event.key === "ArrowRight") {
-                showImage(currentIndex + 1);
-            }
+        function openLightbox(index) {
+            showMedia(index);
+
+            lightbox.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+
+            lightbox.classList.remove("is-open");
+
+            lightboxImage.src = "";
+
+            stopVideo();
+
+            document.body.style.overflow = "";
+        }
+
+
+        // BILDES
+
+        imageThumbnails.forEach(function (thumbnail) {
+
+            thumbnail.addEventListener("click", function () {
+
+                const index =
+                    Number(thumbnail.dataset.imageIndex);
+
+                openLightbox(index);
+            });
         });
+
+
+        // VIDEO
+
+        videoThumbnails.forEach(function (thumbnail) {
+
+            thumbnail.addEventListener("click", function () {
+
+                const videoIndex =
+                    Number(thumbnail.dataset.videoIndex);
+
+                const index =
+                    images.length + videoIndex;
+
+                openLightbox(index);
+            });
+        });
+
+
+        // AIZVĒRT
+
+        closeButton.addEventListener(
+            "click",
+            closeLightbox
+        );
+
+
+        // IEPRIEKŠĒJAIS
+
+        previousButton.addEventListener(
+            "click",
+            function () {
+                showMedia(currentIndex - 1);
+            }
+        );
+
+
+        // NĀKAMAIS
+
+        nextButton.addEventListener(
+            "click",
+            function () {
+                showMedia(currentIndex + 1);
+            }
+        );
+
+
+        // Klikšķis uz melnā fona
+
+        lightbox.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            }
+        );
+
+
+        // KLAVIATŪRA
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    !lightbox.classList.contains("is-open")
+                ) {
+                    return;
+                }
+
+                if (event.key === "Escape") {
+                    closeLightbox();
+                }
+
+                if (event.key === "ArrowLeft") {
+                    showMedia(currentIndex - 1);
+                }
+
+                if (event.key === "ArrowRight") {
+                    showMedia(currentIndex + 1);
+                }
+            }
+        );
+
     });
 </script>
