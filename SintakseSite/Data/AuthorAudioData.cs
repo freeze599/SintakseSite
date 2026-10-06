@@ -11,7 +11,8 @@ public static class AuthorAudioData
             ["Arnolds Ščuckis"] = "arnolds-scuckis",
             ["Dainis Deigelis"] = "dainis-deigelis",
             ["Laima Ābele"] = "laima-abele",
-            ["Liesma Kuzmicka"] = "liesma-kuzmicka"
+            ["Liesma Kuzmicka"] = "liesma-kuzmicka",
+            ["Pauls Kauķis"] = "pauls-kaukis"
         };
 
     public static AuthorAudioPageViewModel? Find(string slug)
